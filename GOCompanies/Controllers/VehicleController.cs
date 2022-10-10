@@ -5,19 +5,26 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GOCompanies.Controllers
 {
-    public class VehicleController : Controller
+    public class VehicleController : BaseController
     {
-        private readonly ICRepo<Vehicle> cRepo;
+        private readonly ICRepo<Vehicle> vRepo;
+        private readonly CDBContext _dbContext;
 
-        public VehicleController(ICRepo<Vehicle> cRepo)
+        public VehicleController(ICRepo<Vehicle> vRepo, CDBContext dbContext) : base(dbContext)
         {
-            this.cRepo = cRepo;
+            this._dbContext = dbContext;
+            this.vRepo = vRepo;
+        }
+        [HttpGet]
+        public ActionResult GetVehicles()
+        {
+            return Ok(vRepo.GetAll());
         }
         // GET: VehicleController
         [HttpGet]
         public ActionResult Index()
         {
-            var vehicle = cRepo.GetAll();
+            var vehicle = vRepo.GetAll();
 
             return View(vehicle);
         }
@@ -25,7 +32,7 @@ namespace GOCompanies.Controllers
         // GET: VehicleController/Details/5
         public ActionResult Details(int id)
         {
-            var vehicle = cRepo.GetById(id);
+            var vehicle = vRepo.GetById(id);
             return View(vehicle);
         }
 
@@ -42,7 +49,7 @@ namespace GOCompanies.Controllers
         {
             try
             {
-                cRepo.Add(vehicle);
+                vRepo.Add(vehicle);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -54,7 +61,7 @@ namespace GOCompanies.Controllers
         // GET: VehicleController/Edit/5
         public ActionResult Edit(int id)
         {
-            var vehicle = cRepo.GetById(id);
+            var vehicle = vRepo.GetById(id);
             return View(vehicle);
         }
 
@@ -65,7 +72,7 @@ namespace GOCompanies.Controllers
         {
             try
             {
-                cRepo.Update(vehicle);
+                vRepo.Update(vehicle);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -77,7 +84,7 @@ namespace GOCompanies.Controllers
         // GET: VehicleController/Delete/5
         public ActionResult Delete(int id)
         {
-            var vehicle = cRepo.GetById(id);
+            var vehicle = vRepo.GetById(id);
             return View(vehicle);
         }
 
@@ -88,7 +95,7 @@ namespace GOCompanies.Controllers
         {
             try
             {
-                cRepo.Delete(id);
+                vRepo.Delete(id);
                 return RedirectToAction(nameof(Index));
             }
             catch

@@ -6,16 +6,21 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using GOCompanies.Models;
+using GOCompanies.Repositories;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace GOCompanies.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly ILogger<HomeController> _logger;
+        private readonly CDBContext _dbContext;
+
+        public HomeController(ILogger<HomeController> logger, CDBContext dbContext):base(dbContext)
         {
             _logger = logger;
+            _dbContext = dbContext;
         }
 
         public IActionResult Index()

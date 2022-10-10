@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VEjqF8FNvAXAyVQ+e8RabcSePonS/FLxBZ/gESfjRyZ8YXgEnUOIIKvMxTol74VNeIJS7ehOsfZGmGo0v7wuCA==",
+  "dgSpecHash": "0AnK7X/1q23t9zCSeWGEzYu3wM1ohi2W1Vr3UgRnMy+z2rjOTb41dN+vNiC68sBYg5r1fnWWQSuG+c+i1Qa1iw==",
   "success": true,
-  "projectFilePath": "D:\\Israa's Work Files\\Projects\\GOCompanies\\GOCompanies\\GOCompanies.csproj",
+  "projectFilePath": "D:\\Israa's Work Files\\Projects\\GOCompany\\GOCompany\\GOCompanies\\GOCompanies.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Ialghoul\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Ialghoul\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",

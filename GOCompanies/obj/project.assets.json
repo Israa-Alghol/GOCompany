@@ -8482,11 +8482,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Israa's Work Files\\Projects\\GOCompanies\\GOCompanies\\GOCompanies.csproj",
+      "projectUniqueName": "D:\\Israa's Work Files\\Projects\\GOCompany\\GOCompany\\GOCompanies\\GOCompanies.csproj",
       "projectName": "GOCompanies",
-      "projectPath": "D:\\Israa's Work Files\\Projects\\GOCompanies\\GOCompanies\\GOCompanies.csproj",
+      "projectPath": "D:\\Israa's Work Files\\Projects\\GOCompany\\GOCompany\\GOCompanies\\GOCompanies.csproj",
       "packagesPath": "C:\\Users\\Ialghoul\\.nuget\\packages\\",
-      "outputPath": "D:\\Israa's Work Files\\Projects\\GOCompanies\\GOCompanies\\obj\\",
+      "outputPath": "D:\\Israa's Work Files\\Projects\\GOCompany\\GOCompany\\GOCompanies\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Ialghoul\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -2,19 +2,23 @@
 using GOCompanies.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Linq;
 
 namespace GOCompanies.Controllers
 {
-    public class CompanyController : Controller
+    public class CompanyController : BaseController
     {
         private readonly ICRepo<Company> cRepo;
+        private readonly CDBContext _dbContext;
 
-        public CompanyController(ICRepo<Company> cRepo)
+        public CompanyController(ICRepo<Company> cRepo,CDBContext dbContext):base(dbContext)
         {
+            _dbContext = dbContext; 
             this.cRepo = cRepo;
         }
 
-
+      
 
         // GET: CompanyController
         [HttpGet]
