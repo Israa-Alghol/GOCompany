@@ -40,7 +40,7 @@ namespace GOCompanies.Repositories
         {
             return dbContext.Companies.ToList();
         }
-        public IList<Company> List(Func<Vehicle, bool> filter)
+        public IList<Company> List2(Func<Vehicle, bool> filter)
         {
             return dbContext.Companies.ToList();
         }

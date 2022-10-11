@@ -29,21 +29,22 @@ namespace GOCompanies.Repositories
 
         public IList<Driver> GetAll()
         {
-            return dbContext.Drivers.ToList();
+            return dbContext.Drivers.Include(a => a.Company).ToList();
+
         }
 
         public Driver GetById(int id)
         {
-            var driver = dbContext.Drivers.SingleOrDefault(c => c.Id == id);
+            var driver = dbContext.Drivers.Include(a => a.Company).FirstOrDefault(c => c.Id == id);
+     
             return driver;
         }
 
         public IList<Driver> List(Func<Driver, bool> filter)
         {
             return dbContext.Drivers.Include(a => a.Company).Where(filter).ToList();
-
         }
-        public IList<Driver> List(Func<Vehicle, bool> filter)
+        public IList<Driver> List2(Func<Vehicle, bool> filter)
         {
             return dbContext.Drivers.ToList();
         }

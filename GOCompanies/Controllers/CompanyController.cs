@@ -3,6 +3,7 @@ using GOCompanies.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Linq;
 
 namespace GOCompanies.Controllers
@@ -103,5 +104,18 @@ namespace GOCompanies.Controllers
                 return View();
             }
         }
+
+        //public ActionResult List(Func<Driver, bool> filter)
+        //{
+        //    var result = cRepo.List(filter);
+
+        //    return View("Index", result);
+        //}
+        //public ActionResult List(Func<Vehicle, bool> filter)
+        //{
+        //    var result = cRepo.List(filter);
+
+        //    return View("Index", result);
+        //}
     }
 }

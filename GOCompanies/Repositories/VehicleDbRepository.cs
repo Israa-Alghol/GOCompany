@@ -29,12 +29,13 @@ namespace GOCompanies.Repositories
 
         public IList<Vehicle> GetAll()
         {
-            return dbContext.Vehicles.ToList();
+            return dbContext.Vehicles.Include(a => a.Company).ToList();
         }
 
         public Vehicle GetById(int id)
         {
-            var vehicle = dbContext.Vehicles.SingleOrDefault(c => c.Id == id);
+            var vehicle = dbContext.Vehicles.Include(a => a.Company).FirstOrDefault(c => c.Id == id);
+
             return vehicle;
         }
 
@@ -43,9 +44,10 @@ namespace GOCompanies.Repositories
             return dbContext.Vehicles.ToList();
         }
 
-        public IList<Vehicle> List(Func<Vehicle, bool> filter)
+        public IList<Vehicle> List2(Func<Vehicle, bool> filter)
         {
             return dbContext.Vehicles.Include(a => a.Company).Where(filter).ToList();
+
         }
         public void Update(Vehicle newvehicle)
         {

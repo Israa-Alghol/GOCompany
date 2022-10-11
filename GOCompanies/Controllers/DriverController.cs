@@ -4,6 +4,7 @@ using GOCompanies.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -15,9 +16,9 @@ namespace GOCompanies.Controllers
         private readonly ICRepo<Company> cRepo;
         private readonly CDBContext _dbContext;
 
-        public DriverController(ICRepo<Company> cRepo,ICRepo<Driver> dRepo, CDBContext dbContext):base(dbContext)
+        public DriverController(ICRepo<Company> cRepo, ICRepo<Driver> dRepo, CDBContext dbContext) : base(dbContext)
         {
-            _dbContext = dbContext; 
+            _dbContext = dbContext;
             this.dRepo = dRepo;
             this.cRepo = cRepo;
         }
@@ -77,6 +78,7 @@ namespace GOCompanies.Controllers
                     {
                         Id = model._driver.Id,
                         Name = model._driver.Name,
+                        CompanyId = company.Id,
                         Company = company,
 
                     };
@@ -98,6 +100,29 @@ namespace GOCompanies.Controllers
         public ActionResult Edit(int id)
         {
             var driver = dRepo.GetById(id);
+            //var companyId = 0;
+            //if (driver.Company == null)
+            //{
+
+            //    companyId = driver.Id;
+            //    driver.Company.Id = 0;
+            //}
+            //else
+            //    companyId = driver.Company.Id;
+
+ 
+
+            //var viewModel = new CompanyViewModel
+            //{
+            //    driverId = driver.Id,
+                //_company.Id = companyId,
+                //_driver.Id = driver.Id,
+                //_driver.Name = driver.Name,
+                //_company.Id = companyId,
+                //CategoryId = product.Category.Id,
+                //Categories = categoryRepository.List().ToList(),
+
+            //};
             return View(driver);
         }
 
@@ -127,7 +152,7 @@ namespace GOCompanies.Controllers
         // POST: DriverController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id,Driver driver)
+        public ActionResult Delete(int id, Driver driver)
         {
             try
             {
@@ -154,5 +179,13 @@ namespace GOCompanies.Controllers
             };
             return vmodel;
         }
+
+        public ActionResult List(int companyId)
+        {
+            var result = dRepo.List(a => a.CompanyId == companyId);
+
+            return View("Index", result);
+        }
+        
     }
 }

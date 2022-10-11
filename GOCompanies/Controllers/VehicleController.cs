@@ -1,19 +1,24 @@
 ﻿using GOCompanies.Models;
 using GOCompanies.Repositories;
+using GOCompanies.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace GOCompanies.Controllers
 {
     public class VehicleController : BaseController
     {
         private readonly ICRepo<Vehicle> vRepo;
+        private readonly ICRepo<Company> cRepo;
         private readonly CDBContext _dbContext;
 
-        public VehicleController(ICRepo<Vehicle> vRepo, CDBContext dbContext) : base(dbContext)
+        public VehicleController(ICRepo<Company> cRepo, ICRepo<Vehicle> vRepo, CDBContext dbContext) : base(dbContext)
         {
-            this._dbContext = dbContext;
+            _dbContext = dbContext;
             this.vRepo = vRepo;
+            this.cRepo = cRepo;
         }
         [HttpGet]
         public ActionResult GetVehicles()
@@ -39,23 +44,51 @@ namespace GOCompanies.Controllers
         // GET: VehicleController/Create
         public ActionResult Create()
         {
-            return View();
+            var model = new CompanyViewModel
+            {
+
+                Companies = FillSelectList()
+            };
+            return View(model);
         }
 
         // POST: VehicleController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Vehicle vehicle)
+        public ActionResult Create(CompanyViewModel model)
         {
-            try
+            if (ModelState.IsValid)
             {
-                vRepo.Add(vehicle);
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    if (model._company.Id == -1)
+                    {
+                        ViewBag.Message = "Please select an company from the list!";
+
+                        return View(GetAllCompanies());
+                    }
+
+                    var company = cRepo.GetById(model._company.Id);
+                    Vehicle vehicle = new Vehicle
+                    {
+                        Id = model._vehicle.Id,
+                        Name = model._vehicle.Name,
+                        CompanyId = company.Id,
+                        Company = company,
+
+                    };
+                    vRepo.Add(vehicle);
+                    return RedirectToAction(nameof(Index));
+
+                }
+                catch
+                {
+                    return View();
+                }
             }
-            catch
-            {
-                return View();
-            }
+
+            ModelState.AddModelError("", "You have to fill all the required fields!");
+            return View(GetAllCompanies());
         }
 
         // GET: VehicleController/Edit/5
@@ -102,6 +135,27 @@ namespace GOCompanies.Controllers
             {
                 return View();
             }
+        }
+        List<Company> FillSelectList()
+        {
+            var companies = cRepo.GetAll().ToList();
+            companies.Insert(0, new Company { Id = -1, Name = " --- Please select an category --- " });
+            return companies;
+        }
+        CompanyViewModel GetAllCompanies()
+        {
+            var vmodel = new CompanyViewModel
+            {
+
+                Companies = FillSelectList()
+            };
+            return vmodel;
+        }
+        public ActionResult List(int companyId)
+        {
+            var result = vRepo.List2(a => a.CompanyId == companyId);
+
+            return View("Index", result);
         }
     }
 }

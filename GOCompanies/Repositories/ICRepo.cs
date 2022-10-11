@@ -8,7 +8,7 @@ namespace GOCompanies.Repositories
     {
         IList<TEntity> GetAll();
         IList<TEntity> List(Func<Driver, bool> filter);
-        IList<TEntity> List(Func<Vehicle, bool> filter);
+        IList<TEntity> List2(Func<Vehicle, bool> filter);
         TEntity GetById(int id);
         void Add(TEntity entity);
         void Delete(int id);

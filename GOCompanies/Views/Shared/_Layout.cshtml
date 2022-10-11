@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="~/js/bootstrap/bootstrap.js" />
 </head>
 <body>
+@*    var <var> x </var>= window.location.href  *@  
+    
+    
     <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">GOCompanies</a>
@@ -35,32 +38,57 @@
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Companies
                     <span class="caret"></span></a>
-                    <ul class="dropdown-menu" >
+                    <ul class="dropdown-menu" >                          
                        @foreach (var item in GOCompanies.Controllers.BaseController._Companies)
                             {
-                               <li><a class="nav-link" href="/home/changeCompany/@item.Value">@item.Text</a></li>
+                                
+                                if( x == "https://localhost:44333/Driver")
+                                {
+                                    <li><a asp-controller="Driver" asp-action="List" asp-route-companyId="@item.Value" class="nav-link">@item.Text</a></li>
+                                }
                             }
-
-                            @*@Html.DropDownListFor(x => x._company, Model.CompanyList, new { @class = "navbar-nav" })*@
+                      
                     </ul>
                 </li>
-            </ul>
+            </ul> 
+            @*@if(asp-controller="Driver")
+            {}
+            else
+            {}*@
+            @*<form>
+            <select name="companyId">
+            
+                @foreach (var item in GOCompanies.Controllers.BaseController._Companies)
+                            {
+                              <option><li><a class="nav-link" href="/Driver/List/@item.Value">@item.Text</a></li></option>
+                            }
+            </select>
+            <br><br>
+            <button type="submit">Submit</button>  
+            </form>*@
 
        </div>
    </nav>
-    </header>
-    <div class="container">
+   </header>
+   <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
-    </div>
+   </div>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="~/js/siteV.js" asp-append-version="true"></script>
+@*    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/siteV.js" asp-append-version="true"></script>*@
     
-   
+   <script>
+        function getCurrentLocation() {
+  
+            // Get current location
+            var loc = window.location.href;
+            alert(loc);
+        }
+   </Script>
 
     @RenderSection("Scripts", required: false)
 </body>
