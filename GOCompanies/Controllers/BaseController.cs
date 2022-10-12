@@ -1,5 +1,6 @@
 ﻿using GOCompanies.Models;
 using GOCompanies.Repositories;
+using GOCompanies.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -28,6 +29,12 @@ namespace GOCompanies.Controllers
             }).ToList();
             base.OnActionExecuting(context);
         }
+        //public ActionResult Act(CompanyViewModel viewModel)
+        //{
+        //    var w = ControllerContext.ActionDescriptor.AttributeRouteInfo.Name;
+           
 
+        //    return View(viewModel);
+        //}
     }
 }

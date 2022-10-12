@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+    @using Microsoft.AspNetCore.Http.Extensions
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - GOCompanies</title>
@@ -41,32 +42,24 @@
                     <ul class="dropdown-menu" >                          
                        @foreach (var item in GOCompanies.Controllers.BaseController._Companies)
                             {
-                                
-                                if( x == "https://localhost:44333/Driver")
+                                @*var routeName = ViewContext.ActionDescriptor.AttributeRouteInfo.Name;*@
+                                var message = @Context.Request.GetEncodedUrl();                             
+                                if (message.Contains("https://localhost:44333/Driver") )
                                 {
                                     <li><a asp-controller="Driver" asp-action="List" asp-route-companyId="@item.Value" class="nav-link">@item.Text</a></li>
+                                }                               
+                                else if(message.Contains("https://localhost:44333/Vehicle") )
+                                {
+                                    <li><a asp-controller="Vehicle" asp-action="List" asp-route-companyId="@item.Value" class="nav-link">@item.Text</a></li>
                                 }
-                            }
-                      
+                                else
+                                {
+                                    <li><a class="nav-link">@item.Text</a></li>
+                                }                               
+                            }                     
                     </ul>
                 </li>
             </ul> 
-            @*@if(asp-controller="Driver")
-            {}
-            else
-            {}*@
-            @*<form>
-            <select name="companyId">
-            
-                @foreach (var item in GOCompanies.Controllers.BaseController._Companies)
-                            {
-                              <option><li><a class="nav-link" href="/Driver/List/@item.Value">@item.Text</a></li></option>
-                            }
-            </select>
-            <br><br>
-            <button type="submit">Submit</button>  
-            </form>*@
-
        </div>
    </nav>
    </header>
@@ -78,18 +71,10 @@
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-@*    <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="~/js/siteV.js" asp-append-version="true"></script>*@
-    
-   <script>
-        function getCurrentLocation() {
-  
-            // Get current location
-            var loc = window.location.href;
-            alert(loc);
-        }
-   </Script>
-
+@*   <script>
+       const loc = window.location.href;   
+   </Script>*@
+   @*<script>console.log(loc);</script>*@
     @RenderSection("Scripts", required: false)
 </body>
 </html>
