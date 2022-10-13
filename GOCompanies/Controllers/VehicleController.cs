@@ -61,18 +61,18 @@ namespace GOCompanies.Controllers
             {
                 try
                 {
-                    if (model._company.Id == -1)
+                    if (model.Company == -1)
                     {
                         ViewBag.Message = "Please select an company from the list!";
 
                         return View(GetAllCompanies());
                     }
 
-                    var company = cRepo.GetById(model._company.Id);
+                    var company = cRepo.GetById(model.Company);
                     Vehicle vehicle = new Vehicle
                     {
-                        Id = model._vehicle.Id,
-                        Name = model._vehicle.Name,
+                        Id = model.Vehicle,
+                        Name = model.nameVehicle,
                         CompanyId = company.Id,
                         Company = company,
 
@@ -95,18 +95,46 @@ namespace GOCompanies.Controllers
         public ActionResult Edit(int id)
         {
             var vehicle = vRepo.GetById(id);
-            return View(vehicle);
+            var CompanyId = 0;
+            if (vehicle.Company == null)
+            {
+
+                CompanyId = vehicle.Id;
+                vehicle.Company.Id = 0;
+            }
+            else
+                CompanyId = vehicle.Company.Id;
+
+
+            var viewModel = new CompanyViewModel
+            {
+                Vehicle = vehicle.Id,
+                nameVehicle = vehicle.Name,
+                Company = CompanyId,
+                Companies = cRepo.GetAll().ToList(),
+
+            };
+            return View(viewModel);
         }
 
         // POST: VehicleController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, Vehicle vehicle)
+        public ActionResult Edit(CompanyViewModel viewModel)
         {
             try
             {
+                var company = cRepo.GetById(viewModel.Company);
+                Vehicle vehicle = new Vehicle
+                {
+                    Id = viewModel.Vehicle,
+                    Name = viewModel.nameVehicle,
+                    Company = company,
+
+                };
                 vRepo.Update(vehicle);
                 return RedirectToAction(nameof(Index));
+
             }
             catch
             {
@@ -124,7 +152,7 @@ namespace GOCompanies.Controllers
         // POST: VehicleController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, Vehicle vehicle)
+        public ActionResult ConfirmDelete(int id)
         {
             try
             {
@@ -139,7 +167,7 @@ namespace GOCompanies.Controllers
         List<Company> FillSelectList()
         {
             var companies = cRepo.GetAll().ToList();
-            companies.Insert(0, new Company { Id = -1, Name = " --- Please select an category --- " });
+            companies.Insert(0, new Company { Id = -1, Name = " --- Please select an company --- " });
             return companies;
         }
         CompanyViewModel GetAllCompanies()

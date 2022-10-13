@@ -1,4 +1,4 @@
-﻿@model GOCompanies.Models.Vehicle
+﻿@model GOCompanies.ViewModels.CompanyViewModel
 
 @{
     ViewData["Title"] = "Edit";
@@ -6,16 +6,23 @@
 
 <h1>Edit</h1>
 
-<h4>Vehicle</h4>
+<h4>CompanyViewModel</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input name="Vehicle" type="hidden" value="@Model.Vehicle">
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+                <label asp-for="nameVehicle" class="control-label">Vehicle Name</label>
+                <input asp-for="nameVehicle" class="form-control" />
+                <span asp-validation-for="nameVehicle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Company" class="control-label">Company Name</label>
+                <select asp-for="Company" class="form-control" 
+                        asp-items = "@(new SelectList(Model.Companies,"Id","Name"))"></select>
+                <span asp-validation-for="Company" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-info" />

@@ -60,6 +60,29 @@
                     </ul>
                 </li>
             </ul> 
+            @*<form>
+            <select name="companyId">
+            
+                @foreach (var item in GOCompanies.Controllers.BaseController._Companies)
+                            {
+                              var message = @Context.Request.GetEncodedUrl();                             
+                                if (message.Contains("https://localhost:44333/Driver") )
+                                {
+                                    <option><li><a asp-controller="Driver" asp-action="List" asp-route-companyId="@item.Value" class="nav-link">@item.Text</a></li></option>
+                                }                               
+                                else if(message.Contains("https://localhost:44333/Vehicle") )
+                                {
+                                    <option><li><a asp-controller="Vehicle" asp-action="List" asp-route-companyId="@item.Value" class="nav-link">@item.Text</a></li></option>
+                                }
+                                else
+                                {
+                                    <option><li><a class="nav-link">@item.Text</a></li></option>
+                                }  
+                            }
+            </select>
+            <br><br>
+            <button type="submit">Submit</button>  
+            </form>*@
        </div>
    </nav>
    </header>
@@ -71,10 +94,7 @@
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-@*   <script>
-       const loc = window.location.href;   
-   </Script>*@
-   @*<script>console.log(loc);</script>*@
+
     @RenderSection("Scripts", required: false)
 </body>
 </html>

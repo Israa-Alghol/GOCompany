@@ -13,10 +13,13 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                Driver's Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Company.Name)
+                Comany Name
+            </th>
+            <th>
+                Vehicle Name
             </th>
             <th></th>
         </tr>
@@ -29,6 +32,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Company.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vehicle.Name)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id" class = "btn btn-outline-warning">Edit</a> |

@@ -14,13 +14,15 @@ namespace GOCompanies.Controllers
     {
         private readonly ICRepo<Driver> dRepo;
         private readonly ICRepo<Company> cRepo;
+        private readonly ICRepo<Vehicle> vRepo;
         private readonly CDBContext _dbContext;
 
-        public DriverController(ICRepo<Company> cRepo, ICRepo<Driver> dRepo, CDBContext dbContext) : base(dbContext)
+        public DriverController(ICRepo<Company> cRepo, ICRepo<Vehicle> vRepo, ICRepo<Driver> dRepo, CDBContext dbContext) : base(dbContext)
         {
             _dbContext = dbContext;
             this.dRepo = dRepo;
             this.cRepo = cRepo;
+            this.vRepo = vRepo;
         }
         [HttpGet]
 
@@ -51,7 +53,7 @@ namespace GOCompanies.Controllers
 
             var model = new CompanyViewModel
             {
-
+                Vehicles = FillSelectListV(),
                 Companies = FillSelectList()
             };
             return View(model);
@@ -66,20 +68,29 @@ namespace GOCompanies.Controllers
             {
                 try
                 {
-                    if (model._company.Id == -1)
+                    if (model.Company == -1)
                     {
                         ViewBag.Message = "Please select an company from the list!";
 
                         return View(GetAllCompanies());
                     }
+                    if (model.Vehicle == -1)
+                    {
+                        ViewBag.Message = "Please select an vehicle from the list!";
 
-                    var company = cRepo.GetById(model._company.Id);
+                        return View(GetAllVehicles());
+                    }
+
+                    var company = cRepo.GetById(model.Company);
+                    var vehicle = vRepo.GetById(model.Vehicle);
                     Driver driver = new Driver
                     {
-                        Id = model._driver.Id,
-                        Name = model._driver.Name,
+                        Id = model.driverId,
+                        Name = model.nameDriver,
                         CompanyId = company.Id,
                         Company = company,
+                        VehicleId = vehicle.Id, 
+                        Vehicle = vehicle,
 
                     };
                     dRepo.Add(driver);
@@ -100,41 +111,61 @@ namespace GOCompanies.Controllers
         public ActionResult Edit(int id)
         {
             var driver = dRepo.GetById(id);
-            //var companyId = 0;
-            //if (driver.Company == null)
-            //{
+            var CompanyId = 0;
+            if (driver.Company == null)
+            {
 
-            //    companyId = driver.Id;
-            //    driver.Company.Id = 0;
-            //}
-            //else
-            //    companyId = driver.Company.Id;
+                CompanyId = driver.Id;
+                driver.Company.Id = 0;
+            }
+            else
 
- 
+                CompanyId = driver.Company.Id;
 
-            //var viewModel = new CompanyViewModel
-            //{
-            //    driverId = driver.Id,
-                //_company.Id = companyId,
-                //_driver.Id = driver.Id,
-                //_driver.Name = driver.Name,
-                //_company.Id = companyId,
-                //CategoryId = product.Category.Id,
-                //Categories = categoryRepository.List().ToList(),
+            var VehicleId = 0;
+            if (driver.Vehicle == null)
+            {
 
-            //};
-            return View(driver);
+                VehicleId = driver.Id;
+                driver.Vehicle.Id = 0;
+            }
+            else
+
+                VehicleId = driver.Vehicle.Id;
+
+            var viewModel = new CompanyViewModel
+            {
+                driverId = driver.Id,
+                nameDriver = driver.Name,
+                Company = CompanyId,
+                Companies = cRepo.GetAll().ToList(),
+                Vehicle = VehicleId,
+                Vehicles = vRepo.GetAll().ToList(),
+
+            };
+            return View(viewModel);
         }
 
         // POST: DriverController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Driver driver)
+        public ActionResult Edit(CompanyViewModel viewModel)
         {
             try
-            {
+            {               
+                var company = cRepo.GetById(viewModel.Company);
+                var vehicle = vRepo.GetById(viewModel.Vehicle);
+                Driver driver = new Driver
+                {
+                    Id = viewModel.driverId,
+                    Name = viewModel.nameDriver,
+                    Company = company,
+                    Vehicle = vehicle,
+
+                };
                 dRepo.Update(driver);
                 return RedirectToAction(nameof(Index));
+
             }
             catch
             {
@@ -152,8 +183,9 @@ namespace GOCompanies.Controllers
         // POST: DriverController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, Driver driver)
+        public ActionResult ConfirmDelete(int id)
         {
+
             try
             {
                 dRepo.Delete(id);
@@ -167,7 +199,7 @@ namespace GOCompanies.Controllers
         List<Company> FillSelectList()
         {
             var companies = cRepo.GetAll().ToList();
-            companies.Insert(0, new Company { Id = -1, Name = " --- Please select an category --- " });
+            companies.Insert(0, new Company { Id = -1, Name = " --- Please select an company --- " });
             return companies;
         }
         CompanyViewModel GetAllCompanies()
@@ -179,7 +211,21 @@ namespace GOCompanies.Controllers
             };
             return vmodel;
         }
+        List<Vehicle> FillSelectListV()
+        {
+            var vehicles = vRepo.GetAll().ToList();
+            vehicles.Insert(0, new Vehicle { Id = -1, Name = " --- Please select an vehicle --- " });
+            return vehicles;
+        }
+        CompanyViewModel GetAllVehicles()
+        {
+            var vmodel = new CompanyViewModel
+            {
 
+                Vehicles = FillSelectListV()
+            };
+            return vmodel;
+        }
         public ActionResult List(int companyId)
         {
             var result = dRepo.List(a => a.CompanyId == companyId);
