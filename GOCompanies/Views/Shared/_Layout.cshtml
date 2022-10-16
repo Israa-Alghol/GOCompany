@@ -35,6 +35,8 @@
                     <a class="nav-link" href="~/Driver">Drivers</a>
                 </li>
             </ul>
+                        
+
                        @* <form>
             
             <select name="companyId" data-id="myDropDown">
@@ -69,7 +71,7 @@
             </form> *@ 
             <ul id="navbar" class="nav navbar-nav  navbar-right">
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="choose" onclick= "Func_a()">Companies
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="choose">@ViewBag.Company
                     <span class="caret"></span></a>
                     <ul class="dropdown-menu" >                          
                        @foreach (var item in GOCompanies.Controllers.BaseController._Companies)
@@ -77,12 +79,16 @@
                                 var message = @Context.Request.GetEncodedUrl();                             
                                 if (message.Contains("https://localhost:44333/Driver") )
                                 {
-                                    <li><a asp-controller="Driver" asp-action="List" asp-route-companyId="@item.Value" class="nav-link" ><span class="caret">@item.Text</span></a></li>
+                                    <li><a asp-controller="Driver" asp-action="List" asp-route-companyId="@item.Value" class="nav-link" >@item.Text</a></li>
                                 }                               
                                 else if(message.Contains("https://localhost:44333/Vehicle") )
                                 {
                                     <li><a asp-controller="Vehicle" asp-action="List" asp-route-companyId="@item.Value" class="nav-link">@item.Text</a></li>
                                 }
+                               @* else if(message.Contains("https://localhost:44333/") )
+                                {
+                                     <li><a asp-controller="Home1" asp-action="Details" asp-route-companyId="@item.Value" class="nav-link">@item.Text</a></li>
+                                }*@
                                 else
                                 {
                                     <li><a class="nav-link">@item.Text</a></li>
@@ -102,15 +108,18 @@
 
    <script src="~/lib/jquery/dist/jquery.min.js"></script>
    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-   <script>
+@*   <script runat="server">
        function Func_a() {
    $('ul.dropdown-menu li').click(function(e){
       var x_ip = $(this).find("span.caret").text();     
       document.getElementById("choose").innerHTML = x_ip;
+      var x = document.getElementById("choose").innerHTML;
+       
 
    });
+
        }
-   </script>
+   </script>*@
    @RenderSection("Scripts", required: false)
 </body>
 </html>

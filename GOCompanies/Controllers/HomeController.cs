@@ -16,11 +16,13 @@ namespace GOCompanies.Controllers
 
         private readonly ILogger<HomeController> _logger;
         private readonly CDBContext _dbContext;
+        private readonly ICRepo<Home1> _hRepo;
 
-        public HomeController(ILogger<HomeController> logger, CDBContext dbContext):base(dbContext)
+        public HomeController(ILogger<HomeController> logger, CDBContext dbContext) :base(dbContext)
         {
             _logger = logger;
             _dbContext = dbContext;
+           
         }
 
         public IActionResult Index()
@@ -28,11 +30,16 @@ namespace GOCompanies.Controllers
             return View();
         }
 
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+        public ActionResult List(int companyId)
+        {
+            var result = _hRepo.List3(a => a.CompanyId == companyId);
+
+            return View("Index", result);
         }
     }
 }

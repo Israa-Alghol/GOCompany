@@ -182,7 +182,12 @@ namespace GOCompanies.Controllers
         public ActionResult List(int companyId)
         {
             var result = vRepo.List2(a => a.CompanyId == companyId);
+            if (result.Any())
+            {
+                var name = result.Where(x => x.CompanyId == companyId).SingleOrDefault()?.Company.Name;
+                ViewBag.Company = name;
 
+            }
             return View("Index", result);
         }
     }

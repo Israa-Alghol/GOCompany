@@ -27,10 +27,21 @@ namespace GOCompanies
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromSeconds(10);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+
+
             services.AddControllersWithViews();
             services.AddScoped<ICRepo<Company>, CompanyDbRepository>();
             services.AddScoped<ICRepo<Vehicle>, VehicleDbRepository>();
             services.AddScoped<ICRepo<Driver>, DriverDbRepository>();
+            services.AddScoped<ICRepo<Home1>, HomeDbRepository>();
             services.AddDbContext<CDBContext>(options =>
             {
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
@@ -46,7 +57,7 @@ namespace GOCompanies
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Home1/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
@@ -56,12 +67,12 @@ namespace GOCompanies
             app.UseRouting();
 
             app.UseAuthorization();
-
+            app.UseSession();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home1}/{action=Index}/{id?}");
             });
         }
     }

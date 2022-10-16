@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GOCompanies.Migrations
 {
     [DbContext(typeof(CDBContext))]
-    [Migration("20221013070659_001_create_db")]
-    partial class _001_create_db
+    [Migration("20221016083429_001_database")]
+    partial class _001_database
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -60,6 +60,26 @@ namespace GOCompanies.Migrations
                     b.ToTable("Drivers");
                 });
 
+            modelBuilder.Entity("GOCompanies.Models.Home", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CompanyId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CompanyId");
+
+                    b.ToTable("Home");
+                });
+
             modelBuilder.Entity("GOCompanies.Models.Vehicle", b =>
                 {
                     b.Property<int>("Id")
@@ -91,6 +111,15 @@ namespace GOCompanies.Migrations
                     b.HasOne("GOCompanies.Models.Vehicle", "Vehicle")
                         .WithMany("Drivers")
                         .HasForeignKey("VehicleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("GOCompanies.Models.Home", b =>
+                {
+                    b.HasOne("GOCompanies.Models.Company", "Company")
+                        .WithMany()
+                        .HasForeignKey("CompanyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

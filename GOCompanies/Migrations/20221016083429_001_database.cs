@@ -2,7 +2,7 @@
 
 namespace GOCompanies.Migrations
 {
-    public partial class _001_create_db : Migration
+    public partial class _001_database : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -17,6 +17,26 @@ namespace GOCompanies.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Companies", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Home",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(nullable: true),
+                    CompanyId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Home", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Home_Companies_CompanyId",
+                        column: x => x.CompanyId,
+                        principalTable: "Companies",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -77,6 +97,11 @@ namespace GOCompanies.Migrations
                 column: "VehicleId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Home_CompanyId",
+                table: "Home",
+                column: "CompanyId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Vehicles_CompanyId",
                 table: "Vehicles",
                 column: "CompanyId");
@@ -86,6 +111,9 @@ namespace GOCompanies.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Drivers");
+
+            migrationBuilder.DropTable(
+                name: "Home");
 
             migrationBuilder.DropTable(
                 name: "Vehicles");

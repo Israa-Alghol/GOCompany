@@ -1,4 +1,5 @@
 ﻿using GOCompanies.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,6 +44,15 @@ namespace GOCompanies.Repositories
         public IList<Company> List2(Func<Vehicle, bool> filter)
         {
             return dbContext.Companies.ToList();
+        }
+        public IList<Company> List3(Func<Home1, bool> filter)
+        {
+            return dbContext.Companies.ToList();
+        }
+        public IList<Company> List4(Func<Company, bool> filter)
+        {
+            return dbContext.Companies.ToList();
+           
         }
         public void Update(Company newcompany)
         {

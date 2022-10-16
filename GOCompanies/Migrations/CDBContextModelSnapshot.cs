@@ -58,6 +58,26 @@ namespace GOCompanies.Migrations
                     b.ToTable("Drivers");
                 });
 
+            modelBuilder.Entity("GOCompanies.Models.Home", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CompanyId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CompanyId");
+
+                    b.ToTable("Home");
+                });
+
             modelBuilder.Entity("GOCompanies.Models.Vehicle", b =>
                 {
                     b.Property<int>("Id")
@@ -89,6 +109,15 @@ namespace GOCompanies.Migrations
                     b.HasOne("GOCompanies.Models.Vehicle", "Vehicle")
                         .WithMany("Drivers")
                         .HasForeignKey("VehicleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("GOCompanies.Models.Home", b =>
+                {
+                    b.HasOne("GOCompanies.Models.Company", "Company")
+                        .WithMany()
+                        .HasForeignKey("CompanyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

@@ -324,3 +324,4 @@ D:\Israa's Work Files\Projects\GOCompany\GOCompany\GOCompanies\obj\Debug\netcore
 D:\Israa's Work Files\Projects\GOCompany\GOCompany\GOCompanies\obj\Debug\netcoreapp3.1\GOCompanies.genruntimeconfig.cache
 D:\Israa's Work Files\Projects\GOCompany\GOCompany\GOCompanies\bin\Debug\netcoreapp3.1\Castle.Core.dll
 D:\Israa's Work Files\Projects\GOCompany\GOCompany\GOCompanies\bin\Debug\netcoreapp3.1\Moq.dll
+D:\Israa's Work Files\Projects\GOCompany\GOCompany\GOCompanies\obj\Debug\netcoreapp3.1\Razor\Views\Home1\Index.cshtml.g.cs

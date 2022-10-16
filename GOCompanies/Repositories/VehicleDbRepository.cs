@@ -49,6 +49,14 @@ namespace GOCompanies.Repositories
             return dbContext.Vehicles.Include(a => a.Company).Where(filter).ToList();
 
         }
+        public IList<Vehicle> List3(Func<Home1, bool> filter)
+        {
+            return dbContext.Vehicles.ToList();
+        }
+        public IList<Vehicle> List4(Func<Company, bool> filter)
+        {
+            return dbContext.Vehicles.ToList();
+        }
         public void Update(Vehicle newvehicle)
         {
             dbContext.Update(newvehicle);
