@@ -42,7 +42,7 @@ namespace GOCompanies.Repositories
 
         public IList<Driver> List(Func<Driver, bool> filter)
         {
-            return dbContext.Drivers.Include(a => a.Company).Where(filter).ToList();
+            return dbContext.Drivers.Include(a => a.Company).Include(a => a.Vehicle).Where(filter).ToList();
         }
         public IList<Driver> List2(Func<Vehicle, bool> filter)
         {

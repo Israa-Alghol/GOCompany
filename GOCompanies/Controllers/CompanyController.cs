@@ -26,7 +26,7 @@ namespace GOCompanies.Controllers
         public ActionResult Index()
         {
             var company = cRepo.GetAll();
-
+            
             return View(company);
         }
 

@@ -182,12 +182,16 @@ namespace GOCompanies.Controllers
         public ActionResult List(int companyId)
         {
             var result = vRepo.List2(a => a.CompanyId == companyId);
-            if (result.Any())
-            {
-                var name = result.Where(x => x.CompanyId == companyId).SingleOrDefault()?.Company.Name;
-                ViewBag.Company = name;
+            var company = cRepo.GetById(companyId);
+            //if (result.Any())
+            //{
+                
+                //    var name = result.Where(x => x.CompanyId == companyId).SingleOrDefault()?.Company.Name;
+                //    ViewBag.Company = name;
 
-            }
+            //}
+            HttpContext.Session.SetInt32("Session2", companyId);
+            HttpContext.Session.SetString("Session1", company.Name);
             return View("Index", result);
         }
     }

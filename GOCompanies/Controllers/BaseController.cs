@@ -7,17 +7,25 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Http;
+using System.Text.Json;
+using System;
+using System.Text;
+using System.Text.Json.Serialization;
 
 namespace GOCompanies.Controllers
 {
     public class BaseController : Controller
     {
         public static List<SelectListItem> _Companies { get; set; }
+
         private readonly CDBContext _dbContext;
+
 
         public BaseController(CDBContext dbContext)
         {
             _dbContext = dbContext;
+            
         }
 
         public override void OnActionExecuting(ActionExecutingContext context)
@@ -28,11 +36,18 @@ namespace GOCompanies.Controllers
                 Value = c.Id.ToString(),
             }).ToList();
             base.OnActionExecuting(context);
+           
+            //string jsonString = JsonSerializer.Serialize(_Companies);
+           
+            //HttpContext.Session.Set<List<SelectListItem>>("cartItems", _Companies);
+
         }
+
+
         //public ActionResult Act(CompanyViewModel viewModel)
         //{
         //    var w = ControllerContext.ActionDescriptor.AttributeRouteInfo.Name;
-           
+
 
         //    return View(viewModel);
         //}

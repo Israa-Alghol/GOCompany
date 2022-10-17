@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace GOCompanies.Controllers
 {
@@ -229,13 +230,16 @@ namespace GOCompanies.Controllers
         public ActionResult List(int companyId)
         {
             var result = dRepo.List(a => a.CompanyId == companyId);
-            if(result.Any())
-            {
-                var name = result.Where(x => x.CompanyId == companyId).SingleOrDefault()?.Company.Name;
-                ViewBag.Company = name;
+            var company = cRepo.GetById(companyId);
+            //if (result.Any())
+            //{
+                HttpContext.Session.SetInt32("Session2", companyId);
+                HttpContext.Session.SetString("Session1", company.Name);
+                //    var name = result.Where(x => x.CompanyId == companyId).SingleOrDefault()?.Company.Name;
+                //    ViewBag.Company = name;
 
-            }
-
+            //}
+            
             return View("Index", result);
         }
         
