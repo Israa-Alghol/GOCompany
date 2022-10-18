@@ -52,10 +52,10 @@ namespace GOCompanies.Repositories
         //{
         //    return dbContext.Drivers.ToList();
         //}
-        public IList<Driver> List4(Func<Company, bool> filter)
-        {
-            return dbContext.Drivers.ToList();
-        }
+        //public IList<Driver> List4(Func<Company, bool> filter)
+        //{
+        //    return dbContext.Drivers.ToList();
+        //}
         public void Update(Driver newdriver)
         {
             dbContext.Update(newdriver);

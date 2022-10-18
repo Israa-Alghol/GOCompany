@@ -2,6 +2,7 @@
 using GOCompanies.Models;
 using GOCompanies.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Moq;
 using System;
 using System.Collections.Generic;
@@ -12,25 +13,37 @@ namespace GOCompaniesTest.Controller
 {
     public class CompanyControllerTest
     {
-        private readonly Mock<ICRepo<Company>> _mockRepo;
-        private readonly Mock<CDBContext> _dbcontext;
-        private readonly CompanyController _controller;
-        public CompanyControllerTest()
-        {
-            _mockRepo = new Mock<ICRepo<Company>>();
-            _dbcontext = new Mock<CDBContext>();
-            _controller = new CompanyController(_mockRepo.Object,_dbcontext.Object);
+        //private readonly Mock<ICRepo<Company>> _mockRepo;
+        //private readonly DbContextOptionsBuilder<CDBContext> _dbcontext;
+        //private readonly CompanyController _controller;
+        //public CompanyControllerTest()
+        //{
 
-        }
+        //}
         [Fact]
-        public void Index_ActionExecutes_ReturnsExactNumberOfCompanies()
+        public void Should_Pass_GetById()
         {
-            _mockRepo.Setup(repo => repo.GetAll())
-                .Returns(new List<Company>() { new Company(), new Company() });
-            var result = _controller.Index();
-            var viewResult = Assert.IsType<ViewResult>(result);
-            var companies = Assert.IsType<List<Company>>(viewResult.Model);
-            Assert.Equal(2, companies.Count);
+            int id = 1;
+            var _mockRepo = new Mock<ICRepo<Company>>();
+            var _dbcontext = new DbContextOptionsBuilder<CDBContext>();
+            _dbcontext.UseSqlServer("Server=FMS-SW07\\SQLEXPRESS;Database=CompaniesDB2;Trusted_Connection=True;MultipleActiveResultSets=true");
+            var mockset = new Mock<DbSet<Company>>();
+            var mockContext = new Mock<CDBContext>(_dbcontext);
+            mockContext.Setup(m => m.Companies).Returns(mockset.Object);
+            using (var context = new CDBContext(_dbcontext.Options))
+            {
+               var _controller = new CompanyController(_mockRepo.Object, context);
+                IEnumerable<Company> list = _controller.GetById(id);
+                Assert.NotNull(list);
+            }
+
+
+            //_mockRepo.Setup(repo => repo.GetAll())
+            //    .Returns(new List<Company>() { new Company(), new Company() });
+            //var result = _controller.Index();
+            //var viewResult = Assert.IsType<ViewResult>(result);
+            //var companies = Assert.IsType<List<Company>>(viewResult.Model);
+            //Assert.Equal(2, companies.Count);
         }
     }
 }

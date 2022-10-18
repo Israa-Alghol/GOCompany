@@ -96,7 +96,6 @@ namespace GOCompanies.Controllers
                     };
                     dRepo.Add(driver);
                     return RedirectToAction(nameof(Index));
-
                 }
                 catch
                 {

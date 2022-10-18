@@ -325,3 +325,11 @@ D:\Israa's Work Files\Projects\GOCompany\GOCompany\GOCompanies\obj\Debug\netcore
 D:\Israa's Work Files\Projects\GOCompany\GOCompany\GOCompanies\bin\Debug\netcoreapp3.1\Castle.Core.dll
 D:\Israa's Work Files\Projects\GOCompany\GOCompany\GOCompanies\bin\Debug\netcoreapp3.1\Moq.dll
 D:\Israa's Work Files\Projects\GOCompany\GOCompany\GOCompanies\obj\Debug\netcoreapp3.1\Razor\Views\Home1\Index.cshtml.g.cs
+D:\Israa's Work Files\Projects\GOCompany\GOCompany\GOCompanies\obj\Debug\netcoreapp3.1\Razor\Views\Account\Index.cshtml.g.cs
+D:\Israa's Work Files\Projects\GOCompany\GOCompany\GOCompanies\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\Israa's Work Files\Projects\GOCompany\GOCompany\GOCompanies\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\Israa's Work Files\Projects\GOCompany\GOCompany\GOCompanies\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\Israa's Work Files\Projects\GOCompany\GOCompany\GOCompanies\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+D:\Israa's Work Files\Projects\GOCompany\GOCompany\GOCompanies\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+D:\Israa's Work Files\Projects\GOCompany\GOCompany\GOCompanies\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
+D:\Israa's Work Files\Projects\GOCompany\GOCompany\GOCompanies\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs

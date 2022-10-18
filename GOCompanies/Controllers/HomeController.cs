@@ -8,9 +8,11 @@ using System.Threading.Tasks;
 using GOCompanies.Models;
 using GOCompanies.Repositories;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GOCompanies.Controllers
 {
+    [Authorize]
     public class HomeController : BaseController
     {
 

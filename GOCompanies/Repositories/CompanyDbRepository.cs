@@ -49,12 +49,12 @@ namespace GOCompanies.Repositories
         //{
         //    return dbContext.Companies.ToList();
         //}
-        public IList<Company> List4(Func<Company, bool> filter)
-        {
-            return dbContext.Companies.Where(filter).ToList();
-            //return dbContext.Companies.ToList();
+        //public IList<Company> List4(Func<Company, bool> filter)
+        //{
+        //    return dbContext.Companies.Where(filter).ToList();
+        //    //return dbContext.Companies.ToList();
            
-        }
+        //}
         public void Update(Company newcompany)
         {
             dbContext.Update(newcompany);

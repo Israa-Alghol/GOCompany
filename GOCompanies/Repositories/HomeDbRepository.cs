@@ -47,10 +47,10 @@ namespace GOCompanies.Repositories
         //{
         //    return dbContext.Home.Include(a => a.Company).Where(filter).ToList();
         //}
-        public IList<Home> List4(Func<Company, bool> filter)
-        {
-            return dbContext.Home.ToList();
-        }
+        //public IList<Home> List4(Func<Company, bool> filter)
+        //{
+        //    return dbContext.Home.ToList();
+        //}
         public void Update(Home home)
         {
             throw new NotImplementedException();

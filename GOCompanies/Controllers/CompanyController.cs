@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace GOCompanies.Controllers
@@ -59,6 +60,11 @@ namespace GOCompanies.Controllers
             }
         }
 
+        public IEnumerable<Company> GetById(object i)
+        {
+            throw new NotImplementedException();
+        }
+
         // GET: CompanyController/Edit/5
         public ActionResult Edit(int id)
         {
@@ -105,21 +111,15 @@ namespace GOCompanies.Controllers
             }
         }
 
-        public ActionResult List(int companyId)
-        {
-            var result = cRepo.List4(a => a.Id == companyId);
-            var company = cRepo.GetById(companyId);
-            //if (result.Any())
-            //{
-
-            //    var name = result.Where(x => x.CompanyId == companyId).SingleOrDefault()?.Company.Name;
-            //    ViewBag.Company = name;
-
-            //}
-            HttpContext.Session.SetInt32("Session2", companyId);
-            HttpContext.Session.SetString("Session1", company.Name);
-            return View("Index", result);
-        }
+        //public ActionResult List(int companyId)
+        //{
+        //    var result = cRepo.List4(a => a.Id == companyId);
+        //    var company = cRepo.GetById(companyId);
+        
+        //    HttpContext.Session.SetInt32("Session2", companyId);
+        //    HttpContext.Session.SetString("Session1", company.Name);
+        //    return View("Index", result);
+        //}
 
     }
 }

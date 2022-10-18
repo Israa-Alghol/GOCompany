@@ -53,10 +53,10 @@ namespace GOCompanies.Repositories
         //{
         //    return dbContext.Vehicles.ToList();
         //}
-        public IList<Vehicle> List4(Func<Company, bool> filter)
-        {
-            return dbContext.Vehicles.ToList();
-        }
+        //public IList<Vehicle> List4(Func<Company, bool> filter)
+        //{
+        //    return dbContext.Vehicles.ToList();
+        //}
         public void Update(Vehicle newvehicle)
         {
             dbContext.Update(newvehicle);

@@ -218,3 +218,8 @@ D:\Israa's Work Files\Projects\GOCompany\GOCompany\GOCompaniesTest\obj\Debug\net
 D:\Israa's Work Files\Projects\GOCompany\GOCompany\GOCompaniesTest\obj\Debug\netcoreapp3.1\GOCompaniesTest.dll
 D:\Israa's Work Files\Projects\GOCompany\GOCompany\GOCompaniesTest\obj\Debug\netcoreapp3.1\GOCompaniesTest.pdb
 D:\Israa's Work Files\Projects\GOCompany\GOCompany\GOCompaniesTest\obj\Debug\netcoreapp3.1\GOCompaniesTest.genruntimeconfig.cache
+D:\Israa's Work Files\Projects\GOCompany\GOCompany\GOCompaniesTest\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\Israa's Work Files\Projects\GOCompany\GOCompany\GOCompaniesTest\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\Israa's Work Files\Projects\GOCompany\GOCompany\GOCompaniesTest\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\Israa's Work Files\Projects\GOCompany\GOCompany\GOCompaniesTest\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+D:\Israa's Work Files\Projects\GOCompany\GOCompany\GOCompaniesTest\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll

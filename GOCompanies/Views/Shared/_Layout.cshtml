@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNetCore.Http;
+@using System.Security.Claims
 @*@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor*@
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +16,15 @@
 <body>
 @*    var <var> x </var>= window.location.href  *@  
     
-    
+@*     @{
+
+        var userId = Context.Session.GetString("userId");
+        if(userId == null)
+        {
+           // Context.Response.Redirect("/Account");
+
+        }
+    }*@
     <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a style="margin:0px 0px 0px 30px;" class="navbar-brand" href="#">GOCompanies</a>
@@ -23,44 +32,57 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div style="margin:0px 0px 0px 30px;" class="container" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
-                </li>
-                <li class="nav-item">
-                    @if(@Context.Session.GetString("Session1") == null)
-                        {
-                            <a class="nav-link" asp-controller="Company">Companies</a>
-                        }
-                        else
-                        {
-                            <a class="nav-link" asp-controller="Company" asp-action="List" asp-route-companyId=@Context.Session.GetInt32("Session2")>Companies</a>
-                        }                   
-                </li>
-                <li class="nav-item">
-                    @if(@Context.Session.GetString("Session1") == null)
-                        {
-                            <a class="nav-link" asp-controller="Vehicle">Vehicles</a>
-                        }
-                        else
-                        {
-                            <a class="nav-link" asp-controller="Vehicle" asp-action="List" asp-route-companyId=@Context.Session.GetInt32("Session2")>Vehicles</a>
-                        }
-                </li>
-                <li class="nav-item">
+            @if (User.Identity.IsAuthenticated)
+                {
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                           
+                                    <a class="nav-link" asp-area="" asp-controller="Company" asp-action="Index">Companies</a>
+                                                
+                        </li>
+                        <li class="nav-item">
+                            @if(@Context.Session.GetString("Session1") == null)
+                                {
+                                    <a class="nav-link" asp-area="" asp-controller="Vehicle">Vehicles</a>
+                                }
+                            else
+                                {
+                                    <a class="nav-link" asp-area="" asp-controller="Vehicle" asp-action="List" asp-route-companyId=@Context.Session.GetInt32("Session2")>Vehicles</a>
+                                }
+                        </li>
+                        <li class="nav-item">
                     
-                    @if(@Context.Session.GetString("Session1") == null)
-                        {
-                            <a class="nav-link" asp-controller="Driver">Drivers</a>
-                        }
-                        else
-                        {
-                            <a class="nav-link" asp-controller="Driver" asp-action="List" asp-route-companyId=@Context.Session.GetInt32("Session2")>Drivers</a>
-                        }
+                            @if(@Context.Session.GetString("Session1") == null)
+                                {
+                                    <a class="nav-link" asp-area="" asp-controller="Driver">Drivers</a>
+                                }
+                            else
+                                {
+                                    <a class="nav-link" asp-area="" asp-controller="Driver" asp-action="List" asp-route-companyId=@Context.Session.GetInt32("Session2")>Drivers</a>
+                                }
                         
-                </li>
-            </ul>
+                        </li>
+                        <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
+                        </li>
+                    </ul>                       
+                }
+                else
+                {
+                    <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+                            </li>
+                    </ul>
                         
+                } 
+            
 
                        @* <form>
             
@@ -96,10 +118,10 @@
             </form> *@ 
             
 
-
-
-            <ul style="margin:0px 80px 0px 0px;" id="navbar" class="nav navbar-nav  navbar-right">
-                <li class="dropdown">
+                @if (User.Identity.IsAuthenticated)
+                {
+                     <ul style="margin:0px 80px 0px 0px;" id="navbar" class="nav navbar-nav  navbar-right">
+                        <li class="dropdown">
                     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="choose" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@Context.Session.GetString("Session1")
                     <span class="caret"></span></a>
                     <ul class="dropdown-menu" >                          
@@ -114,21 +136,25 @@
                                 {
                                     <li><a asp-controller="Vehicle" asp-action="List" asp-route-companyId="@item.Value" class="nav-link">@item.Text</a></li>
                                 }  
-                                else if(message.Contains("https://localhost:44333/Company") )
+                                @*else if(message.Contains("https://localhost:44333/Company") )
                                 {
                                     <li><a asp-controller="Company" asp-action="List" asp-route-companyId="@item.Value" class="nav-link">@item.Text</a></li>
-                                }
+                                }*@
                                 else
                                 {
                                     <li><a class="nav-link">@item.Text</a></li>
                                 }                               
                             }                     
                     </ul>
-                </li>
-            </ul> 
+                        </li>
+                    </ul> 
+                }           
        </div>
+       
    </nav>
+
    </header>
+   
    <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
