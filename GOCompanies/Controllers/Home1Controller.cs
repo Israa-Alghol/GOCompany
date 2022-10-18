@@ -12,9 +12,9 @@ namespace GOCompanies.Controllers
     {
         private readonly ILogger<Home1Controller> _logger;
         private readonly CDBContext _dbContext;
-        private readonly ICRepo<Home1> _hRepo;
+        private readonly ICRepo<Home> _hRepo;
 
-        public Home1Controller(ILogger<Home1Controller> logger, CDBContext dbContext, ICRepo<Home1> hRepo) : base(dbContext)
+        public Home1Controller(ILogger<Home1Controller> logger, CDBContext dbContext, ICRepo<Home> hRepo) : base(dbContext)
         {
             _logger = logger;
             _dbContext = dbContext;

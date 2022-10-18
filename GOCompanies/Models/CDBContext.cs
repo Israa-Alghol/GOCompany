@@ -8,7 +8,7 @@ namespace GOCompanies.Models
         {
 
         }
-        public DbSet<Home1> Home { get; set; }
+        public DbSet<Home> Home { get; set; }
         public DbSet<Company> Companies { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
         public DbSet<Driver> Drivers { get; set; }

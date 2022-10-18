@@ -42,7 +42,7 @@ namespace GOCompanies
             services.AddScoped<ICRepo<Company>, CompanyDbRepository>();
             services.AddScoped<ICRepo<Vehicle>, VehicleDbRepository>();
             services.AddScoped<ICRepo<Driver>, DriverDbRepository>();
-            services.AddScoped<ICRepo<Home1>, HomeDbRepository>();
+            //services.AddScoped<ICRepo<Home1>, HomeDbRepository>();
             services.AddDbContext<CDBContext>(options =>
             {
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
@@ -58,7 +58,7 @@ namespace GOCompanies
             }
             else
             {
-                app.UseExceptionHandler("/Home1/Error");
+                app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
@@ -74,7 +74,7 @@ namespace GOCompanies
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home1}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

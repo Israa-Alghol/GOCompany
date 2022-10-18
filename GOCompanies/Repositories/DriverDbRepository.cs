@@ -48,10 +48,10 @@ namespace GOCompanies.Repositories
         {
             return dbContext.Drivers.ToList();
         }
-        public IList<Driver> List3(Func<Home1, bool> filter)
-        {
-            return dbContext.Drivers.ToList();
-        }
+        //public IList<Driver> List3(Func<Home, bool> filter)
+        //{
+        //    return dbContext.Drivers.ToList();
+        //}
         public IList<Driver> List4(Func<Company, bool> filter)
         {
             return dbContext.Drivers.ToList();

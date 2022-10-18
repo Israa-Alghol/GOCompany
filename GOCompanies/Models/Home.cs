@@ -2,7 +2,7 @@
 
 namespace GOCompanies.Models
 {
-    public class Home1
+    public class Home
     {
         [Key]
         public int Id { get; set; }

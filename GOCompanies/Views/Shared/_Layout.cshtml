@@ -18,17 +18,24 @@
     
     <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">GOCompanies</a>
+        <a style="margin:0px 0px 0px 30px;" class="navbar-brand" href="#">GOCompanies</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="container" id="navbarSupportedContent">
+        <div style="margin:0px 0px 0px 30px;" class="container" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" asp-controller="Home">Home</a>
+                    <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" asp-controller="Company">Companies</a>
+                    @if(@Context.Session.GetString("Session1") == null)
+                        {
+                            <a class="nav-link" asp-controller="Company">Companies</a>
+                        }
+                        else
+                        {
+                            <a class="nav-link" asp-controller="Company" asp-action="List" asp-route-companyId=@Context.Session.GetInt32("Session2")>Companies</a>
+                        }                   
                 </li>
                 <li class="nav-item">
                     @if(@Context.Session.GetString("Session1") == null)
@@ -39,7 +46,6 @@
                         {
                             <a class="nav-link" asp-controller="Vehicle" asp-action="List" asp-route-companyId=@Context.Session.GetInt32("Session2")>Vehicles</a>
                         }
-
                 </li>
                 <li class="nav-item">
                     
@@ -88,10 +94,13 @@
 @*          <br><br>
             <button type="submit" href ="/Driver/List">Submit</button>
             </form> *@ 
+            
 
-            <ul id="navbar" class="nav navbar-nav  navbar-right">
+
+
+            <ul style="margin:0px 80px 0px 0px;" id="navbar" class="nav navbar-nav  navbar-right">
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="choose">@Context.Session.GetString("Session1")
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="choose" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@Context.Session.GetString("Session1")
                     <span class="caret"></span></a>
                     <ul class="dropdown-menu" >                          
                        @foreach (var item in GOCompanies.Controllers.BaseController._Companies)
@@ -104,7 +113,11 @@
                                 else if(message.Contains("https://localhost:44333/Vehicle") )
                                 {
                                     <li><a asp-controller="Vehicle" asp-action="List" asp-route-companyId="@item.Value" class="nav-link">@item.Text</a></li>
-                                }                               
+                                }  
+                                else if(message.Contains("https://localhost:44333/Company") )
+                                {
+                                    <li><a asp-controller="Company" asp-action="List" asp-route-companyId="@item.Value" class="nav-link">@item.Text</a></li>
+                                }
                                 else
                                 {
                                     <li><a class="nav-link">@item.Text</a></li>
