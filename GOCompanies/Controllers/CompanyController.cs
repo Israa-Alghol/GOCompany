@@ -49,15 +49,20 @@ namespace GOCompanies.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Company company)
         {
-            try
+            if(ModelState.IsValid)
             {
-                cRepo.Add(company);
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    cRepo.Add(company);
+                    return RedirectToAction(nameof(Index));
+                }
+                catch
+                {
+                    return View();
+                }
             }
-            catch
-            {
-                return View();
-            }
+            ModelState.AddModelError("", "You have to fill all the required fields!");
+            return View();
         }
 
         public IEnumerable<Company> GetById(object i)
