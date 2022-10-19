@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace GOCompanies.Controllers
 {
+    [Authorize]
     public class AccountController : Controller
     {
         //private readonly CDBContext _context;
@@ -37,6 +38,7 @@ namespace GOCompanies.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Register(RegistrationViewModel model)
         {
             if (ModelState.IsValid)

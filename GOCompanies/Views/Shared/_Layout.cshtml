@@ -32,6 +32,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div style="margin:0px 0px 0px 30px;" class="container" id="navbarSupportedContent">
+            
             @if (User.Identity.IsAuthenticated)
                 {
                     <ul class="navbar-nav mr-auto">
@@ -79,11 +80,8 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
                             </li>
-                    </ul>
-                        
+                    </ul>                        
                 } 
-            
-
                        @* <form>
             
             <select name="companyId" data-id="myDropDown">

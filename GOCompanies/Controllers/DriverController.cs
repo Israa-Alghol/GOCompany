@@ -36,9 +36,10 @@ namespace GOCompanies.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            var driver = dRepo.GetAll();
+            //var driver = dRepo.GetAll();
 
-            return View(driver);
+            //return View(driver);
+            return View();
         }
 
         // GET: DriverController/Details/5
@@ -95,7 +96,7 @@ namespace GOCompanies.Controllers
 
                     };
                     dRepo.Add(driver);
-                    return RedirectToAction(nameof(Index));
+                    return RedirectToAction(nameof(List));
                 }
                 catch
                 {
@@ -164,7 +165,7 @@ namespace GOCompanies.Controllers
 
                 };
                 dRepo.Update(driver);
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(List));
 
             }
             catch
@@ -189,7 +190,7 @@ namespace GOCompanies.Controllers
             try
             {
                 dRepo.Delete(id);
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(List));
             }
             catch
             {
@@ -228,18 +229,36 @@ namespace GOCompanies.Controllers
         }
         public ActionResult List(int companyId)
         {
-            var result = dRepo.List(a => a.CompanyId == companyId);
-            var company = cRepo.GetById(companyId);
-            //if (result.Any())
-            //{
+            if (companyId == 0)
+            {
+                if(HttpContext.Session.GetInt32("Session2") != null)
+                {
+                    companyId = (int)HttpContext.Session.GetInt32("Session2");
+                    var result = dRepo.List(a => a.CompanyId == companyId);
+                    var company = cRepo.GetById(companyId);
+                    HttpContext.Session.SetInt32("Session2", companyId);
+                    HttpContext.Session.SetString("Session1", company.Name);
+
+                    return View("Index", result);
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                var result = dRepo.List(a => a.CompanyId == companyId);
+                var company = cRepo.GetById(companyId);
+                //if (result.Any())
+                //{
                 HttpContext.Session.SetInt32("Session2", companyId);
                 HttpContext.Session.SetString("Session1", company.Name);
                 //    var name = result.Where(x => x.CompanyId == companyId).SingleOrDefault()?.Company.Name;
                 //    ViewBag.Company = name;
 
-            //}
+                //}
+
+                return View("Index", result);
+            }
             
-            return View("Index", result);
         }
         
     }

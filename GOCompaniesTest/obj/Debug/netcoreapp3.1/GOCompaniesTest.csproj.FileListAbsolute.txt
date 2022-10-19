@@ -223,3 +223,10 @@ D:\Israa's Work Files\Projects\GOCompany\GOCompany\GOCompaniesTest\bin\Debug\net
 D:\Israa's Work Files\Projects\GOCompany\GOCompany\GOCompaniesTest\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 D:\Israa's Work Files\Projects\GOCompany\GOCompany\GOCompaniesTest\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
 D:\Israa's Work Files\Projects\GOCompany\GOCompany\GOCompaniesTest\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+D:\Israa's Work Files\Projects\GOCompany\GOCompany\GOCompaniesTest\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Israa's Work Files\Projects\GOCompany\GOCompany\GOCompaniesTest\bin\Debug\netcoreapp3.1\GOCompanies.StaticWebAssets.xml
+D:\Israa's Work Files\Projects\GOCompany\GOCompany\GOCompaniesTest\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.UI.Views.V3.dll
+D:\Israa's Work Files\Projects\GOCompany\GOCompany\GOCompaniesTest\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.UI.Views.V4.dll
+D:\Israa's Work Files\Projects\GOCompany\GOCompany\GOCompaniesTest\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.UI.dll
+D:\Israa's Work Files\Projects\GOCompany\GOCompany\GOCompaniesTest\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Abstractions.dll
+D:\Israa's Work Files\Projects\GOCompany\GOCompany\GOCompaniesTest\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Embedded.dll

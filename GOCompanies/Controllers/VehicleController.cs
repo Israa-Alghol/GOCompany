@@ -3,6 +3,7 @@ using GOCompanies.Repositories;
 using GOCompanies.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -29,9 +30,10 @@ namespace GOCompanies.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            var vehicle = vRepo.GetAll();
+            //var vehicle = vRepo.GetAll();
 
-            return View(vehicle);
+            //return View(vehicle);
+            return View();
         }
 
         // GET: VehicleController/Details/5
@@ -78,7 +80,7 @@ namespace GOCompanies.Controllers
 
                     };
                     vRepo.Add(vehicle);
-                    return RedirectToAction(nameof(Index));
+                    return RedirectToAction(nameof(List));
 
                 }
                 catch
@@ -133,7 +135,7 @@ namespace GOCompanies.Controllers
 
                 };
                 vRepo.Update(vehicle);
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(List));
 
             }
             catch
@@ -157,7 +159,7 @@ namespace GOCompanies.Controllers
             try
             {
                 vRepo.Delete(id);
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(List));
             }
             catch
             {
@@ -181,18 +183,35 @@ namespace GOCompanies.Controllers
         }
         public ActionResult List(int companyId)
         {
-            var result = vRepo.List2(a => a.CompanyId == companyId);
-            var company = cRepo.GetById(companyId);
-            //if (result.Any())
-            //{
-                
+            if (companyId == 0)
+            {
+                if (HttpContext.Session.GetInt32("Session2") != null)
+                {
+                    companyId = (int)HttpContext.Session.GetInt32("Session2");
+                    var result = vRepo.List2(a => a.CompanyId == companyId);
+                    var company = cRepo.GetById(companyId);
+                    HttpContext.Session.SetInt32("Session2", companyId);
+                    HttpContext.Session.SetString("Session1", company.Name);
+                    return View("Index", result);
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                var result = vRepo.List2(a => a.CompanyId == companyId);
+                var company = cRepo.GetById(companyId);
+                //if (result.Any())
+                //{
+
                 //    var name = result.Where(x => x.CompanyId == companyId).SingleOrDefault()?.Company.Name;
                 //    ViewBag.Company = name;
 
-            //}
-            HttpContext.Session.SetInt32("Session2", companyId);
-            HttpContext.Session.SetString("Session1", company.Name);
-            return View("Index", result);
+                //}
+                HttpContext.Session.SetInt32("Session2", companyId);
+                HttpContext.Session.SetString("Session1", company.Name);
+                return View("Index", result);
+            }
+            
         }
     }
 }
