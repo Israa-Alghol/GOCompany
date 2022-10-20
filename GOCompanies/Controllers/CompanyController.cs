@@ -1,5 +1,6 @@
 ﻿using GOCompanies.Models;
 using GOCompanies.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -9,6 +10,7 @@ using System.Linq;
 
 namespace GOCompanies.Controllers
 {
+    [Authorize]
     public class CompanyController : BaseController
     {
         private readonly ICRepo<Company> cRepo;
@@ -20,8 +22,8 @@ namespace GOCompanies.Controllers
             this.cRepo = cRepo;
         }
 
-      
 
+        
         // GET: CompanyController
         [HttpGet]
         public ActionResult Index()

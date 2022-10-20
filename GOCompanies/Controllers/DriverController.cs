@@ -1,6 +1,7 @@
 ﻿using GOCompanies.Models;
 using GOCompanies.Repositories;
 using GOCompanies.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -11,6 +12,7 @@ using System.Text;
 
 namespace GOCompanies.Controllers
 {
+    [Authorize]
     public class DriverController : BaseController
     {
         private readonly ICRepo<Driver> dRepo;
@@ -66,6 +68,7 @@ namespace GOCompanies.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(CompanyViewModel model)
         {
+            var errors = ModelState.Values.SelectMany(v => v.Errors);
             if (ModelState.IsValid)
             {
                 try

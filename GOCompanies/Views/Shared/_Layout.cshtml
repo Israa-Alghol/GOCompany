@@ -32,11 +32,11 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div style="margin:0px 0px 0px 30px;" class="container" id="navbarSupportedContent">
-            
+            <partial name="_LoginPartial" />
             @if (User.Identity.IsAuthenticated)
                 {
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
@@ -66,22 +66,11 @@
                                 }
                         
                         </li>
-                        <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
-                        </li>
                     </ul>                       
                 }
-                else
-                {
-                    <ul class="navbar-nav flex-grow-1">
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
-                            </li>
-                    </ul>                        
-                } 
+                
+                        
+               
                        @* <form>
             
             <select name="companyId" data-id="myDropDown">

@@ -8,21 +8,25 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using System.Collections.Generic;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using AutoMapper;
+using System;
 
 namespace GOCompanies.Controllers
 {
-    [Authorize]
     public class AccountController : Controller
     {
         //private readonly CDBContext _context;
 
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly IMapper _mapper;
+        private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
 
-        public AccountController(UserManager<IdentityUser> userManager,
-                                      SignInManager<IdentityUser> signInManager)
+        public AccountController(IMapper mapper, UserManager<User> userManager, SignInManager<User> signInManager)
         {
+            _mapper = mapper;
             _userManager = userManager;
             _signInManager = signInManager;
         }
@@ -32,141 +36,81 @@ namespace GOCompanies.Controllers
         {
             return View();
         }
+        [HttpGet]
         public IActionResult Register()
         {
             return View();
         }
 
         [HttpPost]
-        [AllowAnonymous]
-        public async Task<IActionResult> Register(RegistrationViewModel model)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(RegistrationViewModel userModel)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                var user = new IdentityUser
-                {
-                    UserName = model.Name,
-                    
-                };
+                return View(userModel);
+            }
 
-                var result = await _userManager.CreateAsync(user, model.Password);
+            var user = _mapper.Map<User>(userModel);
 
-                if (result.Succeeded)
-                {
-                    await _signInManager.SignInAsync(user, isPersistent: false);
-
-                    return RedirectToAction("index", "Home");
-                }
-
+            var result = await _userManager.CreateAsync(user, userModel.Password);
+            if (!result.Succeeded)
+            {
                 foreach (var error in result.Errors)
                 {
-                    ModelState.AddModelError("", error.Description);
+                    ModelState.TryAddModelError(error.Code, error.Description);
                 }
 
-                ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
-
+                return View(userModel);
             }
-            return View(model);
+
+            await _userManager.AddToRoleAsync(user, "Visitor");
+
+            return RedirectToAction(nameof(HomeController.Index), "Home");
         }
         [HttpGet]
-        [AllowAnonymous]
-        public IActionResult Login()
+        public IActionResult Login(string returnUrl = null)
         {
+            ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
+
         [HttpPost]
-        [AllowAnonymous]
-        public async Task<IActionResult> Login(LoginViewModel user)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(LoginViewModel userModel, string returnUrl = null)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                var result = await _signInManager.PasswordSignInAsync(user.Name, user.Password, user.RememberMe, false);
-
-                if (result.Succeeded)
-                {
-                    return RedirectToAction("Index", "Home");
-                }
-
-                ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
-
+                return View(userModel);
             }
-            return View(user);
+
+            var result = await _signInManager.PasswordSignInAsync(userModel.Email, userModel.Password, userModel.RememberMe, false);
+            if (result.Succeeded)
+            {
+                return RedirectToLocal(returnUrl);
+            }
+            else
+            {
+                ModelState.AddModelError("", "Invalid UserName or Password");
+                return View();
+            }
         }
-        [AllowAnonymous]
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Login");
+
+            return RedirectToAction(nameof(HomeController.Index), "Home");
         }
 
-        //[HttpPost]
-        //public async Task<ActionResult> Login(LoginViewModel model)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var userdetails = await _context.Userdetails
-        //        .SingleOrDefaultAsync(m => m.Password == model.Password);
-        //        if (userdetails == null)
-        //        {
-        //            ModelState.AddModelError("Password", "Invalid login attempt.");
-        //            return View("Index");
-        //        }
-        //        HttpContext.Session.SetString("userId", userdetails.Name);
-
-        //    }
-        //    else
-        //    {
-        //        return View("Index");
-        //    }
-        //    return RedirectToAction("Index", "Home");
-        //}
-        //[HttpPost]
-        //public async Task<ActionResult> Registar(RegistrationViewModel model)
-        //{
-
-        //    if (ModelState.IsValid)
-        //    {
-        //        Userdetails user = new Userdetails
-        //        {
-        //            Name = model.Name,
-        //            Password = model.Password,
-
-        //        };
-        //        _context.Add(user);
-        //        await _context.SaveChangesAsync();
-
-        //    }
-        //    else
-        //    {
-        //        return View("Registration");
-        //    }
-        //    return RedirectToAction("Index", "Account");
-        //}
-        //// registration Page load
-        //public IActionResult Registration()
-        //{
-        //    ViewData["Message"] = "Registration Page";
-
-        //    return View();
-        //}
-        //public IActionResult Logout()
-        //{
-        //    HttpContext.Session.Clear();
-        //    return View("Index");
-        //}
-        //public void ValidationMessage(string key, string alert, string value)
-        //{
-        //    try
-        //    {
-        //        TempData.Remove(key);
-        //        TempData.Add(key, value);
-        //        TempData.Add("alertType", alert);
-        //    }
-        //    catch
-        //    {
-        //        Debug.WriteLine("TempDataMessage Error");
-        //    }
-
-        //}
+        private IActionResult RedirectToLocal(string returnUrl)
+        {
+            if (Url.IsLocalUrl(returnUrl))
+                return Redirect(returnUrl);
+            else
+                return RedirectToAction(nameof(HomeController.Index), "Home");
+        }
     }
 }

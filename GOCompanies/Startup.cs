@@ -1,9 +1,13 @@
+using AutoMapper;
+using GOCompanies.Factory;
 using GOCompanies.Models;
 using GOCompanies.Repositories;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Authorization;
@@ -44,6 +48,18 @@ namespace GOCompanies
 
 
             services.AddControllersWithViews();
+
+
+            //services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            //.AddCookie(item => item.LoginPath = new PathString("/Account/Login"))
+            //.AddMicrosoftAccount(option =>
+            //{
+            //    option.ClientId = configuration["Authentication:Microsoft:clientid"];
+            //    option.ClientSecret = configuration["Authentication:Microsoft:ClientSecret"];
+            //    option.SaveTokens = true;
+            //});
+
+
             services.AddScoped<ICRepo<Company>, CompanyDbRepository>();
             services.AddScoped<ICRepo<Vehicle>, VehicleDbRepository>();
             services.AddScoped<ICRepo<Driver>, DriverDbRepository>();
@@ -52,7 +68,23 @@ namespace GOCompanies
             {
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
             });
-            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<CDBContext>();
+
+            services.AddIdentity<User, IdentityRole>(opt =>
+            {
+                opt.Password.RequiredLength = 7;
+                opt.Password.RequireDigit = false;
+                opt.Password.RequireUppercase = false;
+
+                opt.User.RequireUniqueEmail = true;
+            })
+             .AddEntityFrameworkStores<CDBContext>();
+
+            services.AddScoped<IUserClaimsPrincipalFactory<User>, CustomClaimsFactory>();
+
+            services.AddAutoMapper(typeof(Startup));
+
+
+            //services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<CDBContext>();
             //services.AddDefaultIdentity<IdentityUser>(
             //options => options.SignIn.RequireConfirmedAccount = true)
             //.AddRoles<IdentityRole>()

@@ -492,7 +492,6 @@ D:\Israa's Work Files\Projects\1910\GOCompany\GOCompanies\obj\Debug\netcoreapp3.
 D:\Israa's Work Files\Projects\1910\GOCompany\GOCompanies\obj\Debug\netcoreapp3.1\GOCompanies.TagHelpers.input.cache
 D:\Israa's Work Files\Projects\1910\GOCompany\GOCompanies\obj\Debug\netcoreapp3.1\GOCompanies.TagHelpers.output.cache
 D:\Israa's Work Files\Projects\1910\GOCompany\GOCompanies\obj\Debug\netcoreapp3.1\GOCompanies.RazorCoreGenerate.cache
-D:\Israa's Work Files\Projects\1910\GOCompany\GOCompanies\obj\Debug\netcoreapp3.1\Razor\Views\Account\Index.cshtml.g.cs
 D:\Israa's Work Files\Projects\1910\GOCompany\GOCompanies\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
 D:\Israa's Work Files\Projects\1910\GOCompany\GOCompanies\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
 D:\Israa's Work Files\Projects\1910\GOCompany\GOCompanies\obj\Debug\netcoreapp3.1\Razor\Views\Company\Create.cshtml.g.cs
@@ -524,3 +523,8 @@ D:\Israa's Work Files\Projects\1910\GOCompany\GOCompanies\obj\Debug\netcoreapp3.
 D:\Israa's Work Files\Projects\1910\GOCompany\GOCompanies\obj\Debug\netcoreapp3.1\GOCompanies.dll
 D:\Israa's Work Files\Projects\1910\GOCompany\GOCompanies\obj\Debug\netcoreapp3.1\GOCompanies.pdb
 D:\Israa's Work Files\Projects\1910\GOCompany\GOCompanies\obj\Debug\netcoreapp3.1\GOCompanies.genruntimeconfig.cache
+D:\Israa's Work Files\Projects\1910\GOCompany\GOCompanies\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
+D:\Israa's Work Files\Projects\1910\GOCompany\GOCompanies\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.MicrosoftAccount.dll
+D:\Israa's Work Files\Projects\1910\GOCompany\GOCompanies\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
+D:\Israa's Work Files\Projects\1910\GOCompany\GOCompanies\bin\Debug\netcoreapp3.1\AutoMapper.dll
+D:\Israa's Work Files\Projects\1910\GOCompany\GOCompanies\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

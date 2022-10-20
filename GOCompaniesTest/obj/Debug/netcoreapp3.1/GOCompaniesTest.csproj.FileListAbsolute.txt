@@ -462,3 +462,7 @@ D:\Israa's Work Files\Projects\1910\GOCompany\GOCompaniesTest\obj\Debug\netcorea
 D:\Israa's Work Files\Projects\1910\GOCompany\GOCompaniesTest\obj\Debug\netcoreapp3.1\GOCompaniesTest.dll
 D:\Israa's Work Files\Projects\1910\GOCompany\GOCompaniesTest\obj\Debug\netcoreapp3.1\GOCompaniesTest.pdb
 D:\Israa's Work Files\Projects\1910\GOCompany\GOCompaniesTest\obj\Debug\netcoreapp3.1\GOCompaniesTest.genruntimeconfig.cache
+D:\Israa's Work Files\Projects\1910\GOCompany\GOCompaniesTest\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.MicrosoftAccount.dll
+D:\Israa's Work Files\Projects\1910\GOCompany\GOCompaniesTest\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
+D:\Israa's Work Files\Projects\1910\GOCompany\GOCompaniesTest\bin\Debug\netcoreapp3.1\AutoMapper.dll
+D:\Israa's Work Files\Projects\1910\GOCompany\GOCompaniesTest\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

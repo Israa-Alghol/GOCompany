@@ -1,12 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "e6CPaDVgmkr7hoLpBKhhThyRMharYfS5cRi8/hCpQwXYykiBeMObs98WIhKy1EAhmthMgCYImSEjrO90GcDHlQ==",
+  "dgSpecHash": "Kuh8EC+NUA/Irs9QGnf8lpXaOplz66Geh0MDgs+gZhYw+2BNZGwezWtH4euWTmFEU6hIC/3YVi+QK4IUwDTbOw==",
   "success": true,
   "projectFilePath": "D:\\Israa's Work Files\\Projects\\1910\\GOCompany\\GOCompanies\\GOCompanies.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Ialghoul\\.nuget\\packages\\automapper\\9.0.0\\automapper.9.0.0.nupkg.sha512",
+    "C:\\Users\\Ialghoul\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\7.0.0\\automapper.extensions.microsoft.dependencyinjection.7.0.0.nupkg.sha512",
     "C:\\Users\\Ialghoul\\.nuget\\packages\\castle.core\\5.1.0\\castle.core.5.1.0.nupkg.sha512",
     "C:\\Users\\Ialghoul\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Ialghoul\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.29\\microsoft.aspnetcore.authentication.jwtbearer.3.1.29.nupkg.sha512",
+    "C:\\Users\\Ialghoul\\.nuget\\packages\\microsoft.aspnetcore.authentication.microsoftaccount\\3.1.29\\microsoft.aspnetcore.authentication.microsoftaccount.3.1.29.nupkg.sha512",
     "C:\\Users\\Ialghoul\\.nuget\\packages\\microsoft.aspnetcore.authorization\\2.2.0\\microsoft.aspnetcore.authorization.2.2.0.nupkg.sha512",
     "C:\\Users\\Ialghoul\\.nuget\\packages\\microsoft.aspnetcore.authorization.policy\\2.2.0\\microsoft.aspnetcore.authorization.policy.2.2.0.nupkg.sha512",
     "C:\\Users\\Ialghoul\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.29\\microsoft.aspnetcore.cryptography.internal.3.1.29.nupkg.sha512",

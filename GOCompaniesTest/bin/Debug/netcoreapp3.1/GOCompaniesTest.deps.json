@@ -8,9 +8,12 @@
     ".NETCoreApp,Version=v3.1": {
       "GOCompaniesTest/1.0.0": {
         "dependencies": {
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "7.0.0",
           "GOCompanies": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "3.1.29",
+          "Microsoft.AspNetCore.Authentication.MicrosoftAccount": "3.1.29",
           "Microsoft.AspNetCore.Authorization.Policy": "2.2.0",
+          "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "3.1.29",
           "Microsoft.AspNetCore.Http": "2.2.2",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "3.1.29",
           "Microsoft.AspNetCore.Identity.UI": "3.1.29",
@@ -23,6 +26,30 @@
         },
         "runtime": {
           "GOCompaniesTest.dll": {}
+        }
+      },
+      "AutoMapper/9.0.0": {
+        "dependencies": {
+          "Microsoft.CSharp": "4.5.0",
+          "System.Reflection.Emit": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/AutoMapper.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.0.0"
+          }
+        }
+      },
+      "AutoMapper.Extensions.Microsoft.DependencyInjection/7.0.0": {
+        "dependencies": {
+          "AutoMapper": "9.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "3.1.29"
+        },
+        "runtime": {
+          "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "7.0.0.0"
+          }
         }
       },
       "Castle.Core/5.1.0": {
@@ -50,6 +77,14 @@
         },
         "runtime": {
           "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.JwtBearer.dll": {
+            "assemblyVersion": "3.1.29.0",
+            "fileVersion": "3.100.2922.41808"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Authentication.MicrosoftAccount/3.1.29": {
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.MicrosoftAccount.dll": {
             "assemblyVersion": "3.1.29.0",
             "fileVersion": "3.100.2922.41808"
           }
@@ -100,6 +135,17 @@
         }
       },
       "Microsoft.AspNetCore.DataProtection.Abstractions/2.2.0": {},
+      "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore/3.1.29": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Relational": "3.1.29"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll": {
+            "assemblyVersion": "3.1.29.0",
+            "fileVersion": "3.100.2922.41808"
+          }
+        }
+      },
       "Microsoft.AspNetCore.Hosting.Abstractions/2.2.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Hosting.Server.Abstractions": "2.2.0",
@@ -2311,8 +2357,11 @@
       "xunit.runner.visualstudio/2.4.3": {},
       "GOCompanies/1.0.0": {
         "dependencies": {
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "7.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "3.1.29",
+          "Microsoft.AspNetCore.Authentication.MicrosoftAccount": "3.1.29",
           "Microsoft.AspNetCore.Authorization.Policy": "2.2.0",
+          "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "3.1.29",
           "Microsoft.AspNetCore.Http": "2.2.2",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "3.1.29",
           "Microsoft.AspNetCore.Identity.UI": "3.1.29",
@@ -2333,6 +2382,20 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "AutoMapper/9.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-xCqvoxT4HIrNY/xlXG9W+BA/awdrhWvMTKTK/igkGSRbhOhpl3Q8O8Gxlhzjc9JsYqE7sS6AxgyuUUvZ6R5/Bw==",
+      "path": "automapper/9.0.0",
+      "hashPath": "automapper.9.0.0.nupkg.sha512"
+    },
+    "AutoMapper.Extensions.Microsoft.DependencyInjection/7.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-szI4yeRIM7GWe9JyekW0dKYehPB0t6M+I55fPeCebN6PhS7zQZa0eG3bgOnOx+eP3caSNoE7KEJs2rk7MLsh8w==",
+      "path": "automapper.extensions.microsoft.dependencyinjection/7.0.0",
+      "hashPath": "automapper.extensions.microsoft.dependencyinjection.7.0.0.nupkg.sha512"
     },
     "Castle.Core/5.1.0": {
       "type": "package",
@@ -2361,6 +2424,13 @@
       "sha512": "sha512-J0iVu0oHBUaNrmTx1dqQLi+b+QSQh4dIvFONmbd7s6UM+SMMHBZEcLUQsh6IQae6SusITqtWWX4ne+PQSbvMpA==",
       "path": "microsoft.aspnetcore.authentication.jwtbearer/3.1.29",
       "hashPath": "microsoft.aspnetcore.authentication.jwtbearer.3.1.29.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Authentication.MicrosoftAccount/3.1.29": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/uBAUVfu/fDnPBoGhTo98PB0PwXTTpNRxmImcBgmzzFiYi8vk/VhKUGIs0YR66BqgXbmA+0muRQ7EtgRKWQyzw==",
+      "path": "microsoft.aspnetcore.authentication.microsoftaccount/3.1.29",
+      "hashPath": "microsoft.aspnetcore.authentication.microsoftaccount.3.1.29.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Authorization/2.2.0": {
       "type": "package",
@@ -2403,6 +2473,13 @@
       "sha512": "sha512-seANFXmp8mb5Y12m1ShiElJ3ZdOT3mBN3wA1GPhHJIvZ/BxOCPyqEOR+810OWsxEZwA5r5fDRNpG/CqiJmQnJg==",
       "path": "microsoft.aspnetcore.dataprotection.abstractions/2.2.0",
       "hashPath": "microsoft.aspnetcore.dataprotection.abstractions.2.2.0.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore/3.1.29": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-z/jNYHjgaCU4r9kkaGzLbkZtCZq8ixpwx78bN6BRKwRAYIc8RWKq4LZmwDybIQsaxhgY9BZvQe3Q7ng4xIt0eA==",
+      "path": "microsoft.aspnetcore.diagnostics.entityframeworkcore/3.1.29",
+      "hashPath": "microsoft.aspnetcore.diagnostics.entityframeworkcore.3.1.29.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Hosting.Abstractions/2.2.0": {
       "type": "package",

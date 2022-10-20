@@ -1,6 +1,7 @@
 ﻿using GOCompanies.Models;
 using GOCompanies.Repositories;
 using GOCompanies.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -9,6 +10,7 @@ using System.Linq;
 
 namespace GOCompanies.Controllers
 {
+    [Authorize]
     public class VehicleController : BaseController
     {
         private readonly ICRepo<Vehicle> vRepo;
@@ -46,7 +48,7 @@ namespace GOCompanies.Controllers
         // GET: VehicleController/Create
         public ActionResult Create()
         {
-            var model = new CompanyViewModel
+            var model = new VehicleViewModel
             {
 
                 Companies = FillSelectList()
@@ -57,18 +59,20 @@ namespace GOCompanies.Controllers
         // POST: VehicleController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CompanyViewModel model)
+        public ActionResult Create(VehicleViewModel model)
         {
+            var errors = ModelState.Values.SelectMany(v => v.Errors);
+            
             if (ModelState.IsValid)
             {
                 try
                 {
-                    if (model.Company == -1)
-                    {
-                        ViewBag.Message = "Please select an company from the list!";
+                    //if (model.Company == -1)
+                    //{
+                    //    ViewBag.Message = "Please select an company from the list!";
 
-                        return View(GetAllCompanies());
-                    }
+                    //    return View(GetAllCompanies());
+                    //}
 
                     var company = cRepo.GetById(model.Company);
                     Vehicle vehicle = new Vehicle
@@ -80,7 +84,7 @@ namespace GOCompanies.Controllers
 
                     };
                     vRepo.Add(vehicle);
-                    return RedirectToAction(nameof(List));
+                    return RedirectToAction(nameof(List), new { id = vehicle.CompanyId });
 
                 }
                 catch
@@ -108,7 +112,7 @@ namespace GOCompanies.Controllers
                 CompanyId = vehicle.Company.Id;
 
 
-            var viewModel = new CompanyViewModel
+            var viewModel = new VehicleViewModel
             {
                 Vehicle = vehicle.Id,
                 nameVehicle = vehicle.Name,
@@ -122,7 +126,7 @@ namespace GOCompanies.Controllers
         // POST: VehicleController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(CompanyViewModel viewModel)
+        public ActionResult Edit(VehicleViewModel viewModel)
         {
             try
             {
@@ -169,12 +173,12 @@ namespace GOCompanies.Controllers
         List<Company> FillSelectList()
         {
             var companies = cRepo.GetAll().ToList();
-            companies.Insert(0, new Company { Id = -1, Name = " --- Please select an company --- " });
+            //companies.Insert(0, new Company { Id = -1, Name = " --- Please select an company --- " });
             return companies;
         }
-        CompanyViewModel GetAllCompanies()
+        VehicleViewModel GetAllCompanies()
         {
-            var vmodel = new CompanyViewModel
+            var vmodel = new VehicleViewModel
             {
 
                 Companies = FillSelectList()

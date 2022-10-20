@@ -1,4 +1,4 @@
-﻿@model GOCompanies.ViewModels.CompanyViewModel
+﻿@model GOCompanies.ViewModels.VehicleViewModel
 @{
     ViewData["Title"] = "Create";
 }
@@ -9,12 +9,13 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create" enctype ="multipart/form-data">
+        <form method ="post" asp-action="Create" enctype ="multipart/form-data">
             @if(ViewBag.Message != null)
             {
                 <h5 class ="alert alert-danger">@ViewBag.Message</h5>
             }
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input name="Vehicle" type="hidden" value="@Model.Vehicle">
             <div class="form-group">
                 <label asp-for="nameVehicle" class="control-label">Vehicle Name</label>
                 <input asp-for="nameVehicle" class="form-control" />
@@ -23,7 +24,8 @@
             <div class="form-group">
                 <label asp-for="Company" class="control-label">Company Name</label>
                 <select asp-for="Company" class="form-control" 
-                        asp-items = "@(new SelectList(Model.Companies,"Id","Name"))"></select>
+                        asp-items = "@(new SelectList(Model.Companies,"Id","Name"))">
+                     <option value="">--- Please select an company ---</option></select>
                 <span asp-validation-for="Company" class="text-danger"></span>
             </div>
             <div class="form-group">
