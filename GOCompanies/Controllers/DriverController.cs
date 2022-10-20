@@ -70,18 +70,12 @@ namespace GOCompanies.Controllers
             {
                 try
                 {
-                    if (model.Company == -1)
-                    {
-                        ViewBag.Message = "Please select an company from the list!";
+                    //if (model.Company == -1)
+                    //{
+                    //    ViewBag.Message = "Please select an company from the list!";
 
-                        return View(GetAllCompanies());
-                    }
-                    if (model.Vehicle == -1)
-                    {
-                        ViewBag.Message = "Please select an vehicle from the list!";
-
-                        return View(GetAllVehicles());
-                    }
+                    //    return View(GetAllCompanies());
+                    //}           
 
                     var company = cRepo.GetById(model.Company);
                     var vehicle = vRepo.GetById(model.Vehicle);
@@ -200,7 +194,7 @@ namespace GOCompanies.Controllers
         List<Company> FillSelectList()
         {
             var companies = cRepo.GetAll().ToList();
-            companies.Insert(0, new Company { Id = -1, Name = " --- Please select an company --- " });
+            //companies.Insert(0, new Company { Id = -1, Name = " --- Please select an company --- " });
             return companies;
         }
         CompanyViewModel GetAllCompanies()
@@ -215,7 +209,7 @@ namespace GOCompanies.Controllers
         List<Vehicle> FillSelectListV()
         {
             var vehicles = vRepo.GetAll().ToList();
-            vehicles.Insert(0, new Vehicle { Id = -1, Name = " --- Please select an vehicle --- " });
+            //vehicles.Insert(0, new Vehicle { Id = -1, Name = " --- Please select an vehicle --- " });
             return vehicles;
         }
         CompanyViewModel GetAllVehicles()

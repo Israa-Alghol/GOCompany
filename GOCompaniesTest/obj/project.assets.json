@@ -125,6 +125,21 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.DataProtection.Abstractions.dll": {}
         }
       },
+      "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore/3.1.29": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Relational": "3.1.29"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "Microsoft.AspNetCore.Hosting.Abstractions/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -3318,6 +3333,7 @@
         "dependencies": {
           "Microsoft.AspNetCore.Authentication.JwtBearer": "3.1.29",
           "Microsoft.AspNetCore.Authorization.Policy": "2.2.0",
+          "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "3.1.29",
           "Microsoft.AspNetCore.Http": "2.2.2",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "3.1.29",
           "Microsoft.AspNetCore.Identity.UI": "3.1.29",
@@ -3529,6 +3545,21 @@
         "lib/netstandard2.0/Microsoft.AspNetCore.DataProtection.Abstractions.xml",
         "microsoft.aspnetcore.dataprotection.abstractions.2.2.0.nupkg.sha512",
         "microsoft.aspnetcore.dataprotection.abstractions.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore/3.1.29": {
+      "sha512": "z/jNYHjgaCU4r9kkaGzLbkZtCZq8ixpwx78bN6BRKwRAYIc8RWKq4LZmwDybIQsaxhgY9BZvQe3Q7ng4xIt0eA==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.diagnostics.entityframeworkcore/3.1.29",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/netcoreapp3.1/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll",
+        "lib/netcoreapp3.1/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.xml",
+        "microsoft.aspnetcore.diagnostics.entityframeworkcore.3.1.29.nupkg.sha512",
+        "microsoft.aspnetcore.diagnostics.entityframeworkcore.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Hosting.Abstractions/2.2.0": {
@@ -10531,6 +10562,7 @@
       "GOCompanies >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 3.1.29",
       "Microsoft.AspNetCore.Authorization.Policy >= 2.2.0",
+      "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 3.1.29",
       "Microsoft.AspNetCore.Http >= 2.2.2",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 3.1.29",
       "Microsoft.AspNetCore.Identity.UI >= 3.1.29",
@@ -10592,6 +10624,10 @@
           "Microsoft.AspNetCore.Authorization.Policy": {
             "target": "Package",
             "version": "[2.2.0, )"
+          },
+          "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
+            "target": "Package",
+            "version": "[3.1.29, )"
           },
           "Microsoft.AspNetCore.Http": {
             "target": "Package",

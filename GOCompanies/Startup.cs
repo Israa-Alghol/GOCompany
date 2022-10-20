@@ -52,7 +52,7 @@ namespace GOCompanies
             {
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
             });
-             services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<CDBContext>();
+            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<CDBContext>();
             //services.AddDefaultIdentity<IdentityUser>(
             //options => options.SignIn.RequireConfirmedAccount = true)
             //.AddRoles<IdentityRole>()

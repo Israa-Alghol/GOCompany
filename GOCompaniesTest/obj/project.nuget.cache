@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "AEofA1A9F/u5dKYrWSBbeDJre+H0BXZ0dEMpYJnQdhlKn4Z3RHBO6Sagsv4LY6nQnYtszxU7f1mULMwpkrDuxw==",
+  "dgSpecHash": "sLwWv6+j7I6xK8CDckNo9tG8rdazIfuYXRcfegCQ1crI7mHnTzmU4QBVteHeXfxeH6RglzwvIPNRI+XzQSQONg==",
   "success": true,
   "projectFilePath": "D:\\Israa's Work Files\\Projects\\1910\\GOCompany\\GOCompaniesTest\\GOCompaniesTest.csproj",
   "expectedPackageFiles": [
@@ -14,6 +14,7 @@
     "C:\\Users\\Ialghoul\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.29\\microsoft.aspnetcore.cryptography.keyderivation.3.1.29.nupkg.sha512",
     "C:\\Users\\Ialghoul\\.nuget\\packages\\microsoft.aspnetcore.dataprotection\\2.2.0\\microsoft.aspnetcore.dataprotection.2.2.0.nupkg.sha512",
     "C:\\Users\\Ialghoul\\.nuget\\packages\\microsoft.aspnetcore.dataprotection.abstractions\\2.2.0\\microsoft.aspnetcore.dataprotection.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\Ialghoul\\.nuget\\packages\\microsoft.aspnetcore.diagnostics.entityframeworkcore\\3.1.29\\microsoft.aspnetcore.diagnostics.entityframeworkcore.3.1.29.nupkg.sha512",
     "C:\\Users\\Ialghoul\\.nuget\\packages\\microsoft.aspnetcore.hosting.abstractions\\2.2.0\\microsoft.aspnetcore.hosting.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Ialghoul\\.nuget\\packages\\microsoft.aspnetcore.hosting.server.abstractions\\2.2.0\\microsoft.aspnetcore.hosting.server.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Ialghoul\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
