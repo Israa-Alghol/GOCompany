@@ -17,6 +17,14 @@ body {
 .row {
 
 }
+bg {
+    background-image: url("~/pexels-photo-380769.jpeg");
+    background-repeat:no-repeat;
+    background-size:cover;
+    float:none;
+    height:435px;
+    width:100%;
+}
 
 
 

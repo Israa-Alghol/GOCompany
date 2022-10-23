@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -212,6 +213,27 @@ namespace GOCompanies.Controllers
         List<Vehicle> FillSelectListV()
         {
             var vehicles = vRepo.GetAll().ToList();
+            Hashtable hTable = new Hashtable();
+            List<Vehicle> duplicateList = new List<Vehicle>();
+            foreach (var vehicle in vehicles)
+            {
+                var v = vehicle.Name;
+                if (hTable.Contains(v))
+                {
+                    duplicateList.Add(vehicle);
+                }
+                else
+                    hTable.Add(v, string.Empty);
+            }
+            foreach (var vehicle in duplicateList)
+                vehicles.Remove(vehicle);
+            //for (int i = 0; i < vehicles.Count; i++)
+            //{
+                //var distinct = vehicles[i].Name.Distinct().ToList();
+                //var vehicle = vehicles[i];
+                //var v = vehicle.Name;
+            //}
+            //var distinct = vehicles.Distinct().ToList();
             //vehicles.Insert(0, new Vehicle { Id = -1, Name = " --- Please select an vehicle --- " });
             return vehicles;
         }
@@ -221,6 +243,7 @@ namespace GOCompanies.Controllers
             {
 
                 Vehicles = FillSelectListV()
+                
             };
             return vmodel;
         }

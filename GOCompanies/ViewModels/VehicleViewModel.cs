@@ -13,6 +13,7 @@ namespace GOCompanies.ViewModels
         public int Vehicle { get; set; }
         [Required(ErrorMessage = "Please Select Vehicle Name")]
         public string nameVehicle { get; set; }
+        public List<Vehicle> Vehicles { get; set; }
         public SelectList CompanyList { get; set; }
     }
 }

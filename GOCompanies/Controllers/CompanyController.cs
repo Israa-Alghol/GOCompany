@@ -56,7 +56,18 @@ namespace GOCompanies.Controllers
                 try
                 {
                     cRepo.Add(company);
+                    var x = cRepo.GetAll().ToList();
+                    foreach(var xc in x)
+                    {
+                        if(xc.Name == company.Name)
+                        {
+                            ViewBag.Message = "Company Name alreary exist!";
+                            return View();
+                        }
+                        
+                    }
                     return RedirectToAction(nameof(Index));
+
                 }
                 catch
                 {

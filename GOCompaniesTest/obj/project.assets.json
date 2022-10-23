@@ -10667,11 +10667,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Israa's Work Files\\Projects\\1910\\GOCompany\\GOCompaniesTest\\GOCompaniesTest.csproj",
+      "projectUniqueName": "D:\\Israa's Work Files\\Projects\\20-10\\GOCompany\\GOCompaniesTest\\GOCompaniesTest.csproj",
       "projectName": "GOCompaniesTest",
-      "projectPath": "D:\\Israa's Work Files\\Projects\\1910\\GOCompany\\GOCompaniesTest\\GOCompaniesTest.csproj",
+      "projectPath": "D:\\Israa's Work Files\\Projects\\20-10\\GOCompany\\GOCompaniesTest\\GOCompaniesTest.csproj",
       "packagesPath": "C:\\Users\\Ialghoul\\.nuget\\packages\\",
-      "outputPath": "D:\\Israa's Work Files\\Projects\\1910\\GOCompany\\GOCompaniesTest\\obj\\",
+      "outputPath": "D:\\Israa's Work Files\\Projects\\20-10\\GOCompany\\GOCompaniesTest\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Ialghoul\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -10688,8 +10688,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "D:\\Israa's Work Files\\Projects\\1910\\GOCompany\\GOCompanies\\GOCompanies.csproj": {
-              "projectPath": "D:\\Israa's Work Files\\Projects\\1910\\GOCompany\\GOCompanies\\GOCompanies.csproj"
+            "D:\\Israa's Work Files\\Projects\\20-10\\GOCompany\\GOCompanies\\GOCompanies.csproj": {
+              "projectPath": "D:\\Israa's Work Files\\Projects\\20-10\\GOCompany\\GOCompanies\\GOCompanies.csproj"
             }
           }
         }
