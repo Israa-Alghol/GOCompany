@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Israa's Work Files\\Projects\\20-10\\GOCompany\\GOCompanies\\GOCompanies.csproj": {}
+    "D:\\Israa's Work Files\\Projects\\23-10\\GOCompany\\GOCompanies\\GOCompanies.csproj": {}
   },
   "projects": {
-    "D:\\Israa's Work Files\\Projects\\20-10\\GOCompany\\GOCompanies\\GOCompanies.csproj": {
+    "D:\\Israa's Work Files\\Projects\\23-10\\GOCompany\\GOCompanies\\GOCompanies.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Israa's Work Files\\Projects\\20-10\\GOCompany\\GOCompanies\\GOCompanies.csproj",
+        "projectUniqueName": "D:\\Israa's Work Files\\Projects\\23-10\\GOCompany\\GOCompanies\\GOCompanies.csproj",
         "projectName": "GOCompanies",
-        "projectPath": "D:\\Israa's Work Files\\Projects\\20-10\\GOCompany\\GOCompanies\\GOCompanies.csproj",
+        "projectPath": "D:\\Israa's Work Files\\Projects\\23-10\\GOCompany\\GOCompanies\\GOCompanies.csproj",
         "packagesPath": "C:\\Users\\Ialghoul\\.nuget\\packages\\",
-        "outputPath": "D:\\Israa's Work Files\\Projects\\20-10\\GOCompany\\GOCompanies\\obj\\",
+        "outputPath": "D:\\Israa's Work Files\\Projects\\23-10\\GOCompany\\GOCompanies\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Ialghoul\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -43,6 +43,14 @@
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
               "version": "[7.0.0, )"
+            },
+            "FakeItEasy": {
+              "target": "Package",
+              "version": "[7.3.1, )"
+            },
+            "FluentAssertions": {
+              "target": "Package",
+              "version": "[6.8.0, )"
             },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",

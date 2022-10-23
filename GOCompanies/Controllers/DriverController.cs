@@ -89,7 +89,7 @@ namespace GOCompanies.Controllers
                         Name = model.nameDriver,
                         CompanyId = company.Id,
                         Company = company,
-                        VehicleId = vehicle.Id, 
+                        VehicleId = vehicle.Id,
                         Vehicle = vehicle,
 
                     };
@@ -156,7 +156,7 @@ namespace GOCompanies.Controllers
             foreach (var vehicle in duplicateList)
                 viewModel.Vehicles.Remove(vehicle);
 
-           
+
             return View(viewModel);
         }
 
@@ -166,7 +166,7 @@ namespace GOCompanies.Controllers
         public ActionResult Edit(CompanyViewModel viewModel)
         {
             try
-            {               
+            {
                 var company = cRepo.GetById(viewModel.Company);
                 var vehicle = vRepo.GetById(viewModel.Vehicle);
                 Driver driver = new Driver
@@ -227,31 +227,8 @@ namespace GOCompanies.Controllers
         }
         List<Vehicle> FillSelectListV()
         {
-            var vehicles = vRepo.GetAll().ToList();
-            Hashtable hTable = new Hashtable();
-            List<Vehicle> duplicateList = new List<Vehicle>();
-            foreach (var vehicle in vehicles)
-            {
-                var v = vehicle.Name;
-                if (hTable.Contains(v))
-                {
-                    duplicateList.Add(vehicle);
-                }
-                else
-                    hTable.Add(v, string.Empty);
-            }
-            foreach (var vehicle in duplicateList)
-                vehicles.Remove(vehicle);
-
-            return vehicles;
-            //for (int i = 0; i < vehicles.Count; i++)
-            //{
-            //var distinct = vehicles[i].Name.Distinct().ToList();
-            //var vehicle = vehicles[i];
-            //var v = vehicle.Name;
-            //}
-            //var distinct = vehicles.Distinct().ToList();
-            //vehicles.Insert(0, new Vehicle { Id = -1, Name = " --- Please select an vehicle --- " });
+            int companyId = (int)HttpContext.Session.GetInt32("Session2");
+            return vRepo.GetAll().Where(a => a.CompanyId == companyId).ToList();
 
         }
         CompanyViewModel GetAllVehicles()
@@ -260,7 +237,7 @@ namespace GOCompanies.Controllers
             {
 
                 Vehicles = FillSelectListV()
-                
+
             };
             return vmodel;
         }
@@ -268,7 +245,7 @@ namespace GOCompanies.Controllers
         {
             if (companyId == 0)
             {
-                if(HttpContext.Session.GetInt32("Session2") != null)
+                if (HttpContext.Session.GetInt32("Session2") != null)
                 {
                     companyId = (int)HttpContext.Session.GetInt32("Session2");
                     var result = dRepo.List(a => a.CompanyId == companyId);
@@ -295,8 +272,8 @@ namespace GOCompanies.Controllers
 
                 return View("Index", result);
             }
-            
+
         }
-        
+
     }
 }

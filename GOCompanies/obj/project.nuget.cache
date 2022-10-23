@@ -1,12 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "TWniUMn2kijBAWGsCee4UzYFKb5KQSB7CNwXnWj4T4P/8Z2bR+A5+xiroOh5mH9Us4SEpsU51robDvNnQ0f+Sw==",
+  "dgSpecHash": "8jx2ezP532AOXBYd99CtNL8rzSn07u/t8uu5ofcb/RSWBkQwdz3qSwvnsgJaoC6IzQct6lPUDtm1SeMlwS90kQ==",
   "success": true,
-  "projectFilePath": "D:\\Israa's Work Files\\Projects\\20-10\\GOCompany\\GOCompanies\\GOCompanies.csproj",
+  "projectFilePath": "D:\\Israa's Work Files\\Projects\\23-10\\GOCompany\\GOCompanies\\GOCompanies.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Ialghoul\\.nuget\\packages\\automapper\\9.0.0\\automapper.9.0.0.nupkg.sha512",
     "C:\\Users\\Ialghoul\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\7.0.0\\automapper.extensions.microsoft.dependencyinjection.7.0.0.nupkg.sha512",
     "C:\\Users\\Ialghoul\\.nuget\\packages\\castle.core\\5.1.0\\castle.core.5.1.0.nupkg.sha512",
+    "C:\\Users\\Ialghoul\\.nuget\\packages\\fakeiteasy\\7.3.1\\fakeiteasy.7.3.1.nupkg.sha512",
+    "C:\\Users\\Ialghoul\\.nuget\\packages\\fluentassertions\\6.8.0\\fluentassertions.6.8.0.nupkg.sha512",
     "C:\\Users\\Ialghoul\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Ialghoul\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.29\\microsoft.aspnetcore.authentication.jwtbearer.3.1.29.nupkg.sha512",
     "C:\\Users\\Ialghoul\\.nuget\\packages\\microsoft.aspnetcore.authentication.microsoftaccount\\3.1.29\\microsoft.aspnetcore.authentication.microsoftaccount.3.1.29.nupkg.sha512",

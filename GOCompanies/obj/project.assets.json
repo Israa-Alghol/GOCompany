@@ -40,6 +40,30 @@
           "lib/netstandard2.1/Castle.Core.dll": {}
         }
       },
+      "FakeItEasy/7.3.1": {
+        "type": "package",
+        "dependencies": {
+          "Castle.Core": "4.3.1"
+        },
+        "compile": {
+          "lib/netstandard2.1/FakeItEasy.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/FakeItEasy.dll": {}
+        }
+      },
+      "FluentAssertions/6.8.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Configuration.ConfigurationManager": "4.4.0"
+        },
+        "compile": {
+          "lib/netcoreapp3.0/FluentAssertions.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/FluentAssertions.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Authentication.Abstractions/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -1779,7 +1803,7 @@
           "System.Security.Permissions": "4.5.0"
         },
         "compile": {
-          "ref/netstandard2.0/_._": {}
+          "ref/netstandard2.0/System.Configuration.ConfigurationManager.dll": {}
         },
         "runtime": {
           "lib/netstandard2.0/System.Configuration.ConfigurationManager.dll": {}
@@ -3087,6 +3111,56 @@
         "lib/netstandard2.1/Castle.Core.dll",
         "lib/netstandard2.1/Castle.Core.xml",
         "readme.txt"
+      ]
+    },
+    "FakeItEasy/7.3.1": {
+      "sha512": "ldJSgPLzVdN7MxmaZhdcnAcUya185Eqbqyx5tLjZHATI80UfLnSkQgQczD72qAdx8l3CUkWzNC43zrtnrz/jGQ==",
+      "type": "package",
+      "path": "fakeiteasy/7.3.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "fakeiteasy.7.3.1.nupkg.sha512",
+        "fakeiteasy.nuspec",
+        "images/FakeItEasy.png",
+        "lib/net45/FakeItEasy.dll",
+        "lib/net45/FakeItEasy.xml",
+        "lib/net5.0/FakeItEasy.dll",
+        "lib/net5.0/FakeItEasy.xml",
+        "lib/netstandard2.0/FakeItEasy.dll",
+        "lib/netstandard2.0/FakeItEasy.xml",
+        "lib/netstandard2.1/FakeItEasy.dll",
+        "lib/netstandard2.1/FakeItEasy.xml"
+      ]
+    },
+    "FluentAssertions/6.8.0": {
+      "sha512": "NfSlAG97wMxS48Ov+wQEhJITdn4bKrgtKrG4sCPrFBVKozpC57lQ2vzsPdxUOsPbfEgEQTMtvCDECxIlDBfgNA==",
+      "type": "package",
+      "path": "fluentassertions/6.8.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "FluentAssertions.png",
+        "fluentassertions.6.8.0.nupkg.sha512",
+        "fluentassertions.nuspec",
+        "lib/net47/FluentAssertions.dll",
+        "lib/net47/FluentAssertions.pdb",
+        "lib/net47/FluentAssertions.xml",
+        "lib/net6.0/FluentAssertions.dll",
+        "lib/net6.0/FluentAssertions.pdb",
+        "lib/net6.0/FluentAssertions.xml",
+        "lib/netcoreapp2.1/FluentAssertions.dll",
+        "lib/netcoreapp2.1/FluentAssertions.pdb",
+        "lib/netcoreapp2.1/FluentAssertions.xml",
+        "lib/netcoreapp3.0/FluentAssertions.dll",
+        "lib/netcoreapp3.0/FluentAssertions.pdb",
+        "lib/netcoreapp3.0/FluentAssertions.xml",
+        "lib/netstandard2.0/FluentAssertions.dll",
+        "lib/netstandard2.0/FluentAssertions.pdb",
+        "lib/netstandard2.0/FluentAssertions.xml",
+        "lib/netstandard2.1/FluentAssertions.dll",
+        "lib/netstandard2.1/FluentAssertions.pdb",
+        "lib/netstandard2.1/FluentAssertions.xml"
       ]
     },
     "Microsoft.AspNetCore.Authentication.Abstractions/2.2.0": {
@@ -9569,6 +9643,8 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 7.0.0",
+      "FakeItEasy >= 7.3.1",
+      "FluentAssertions >= 6.8.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 3.1.29",
       "Microsoft.AspNetCore.Authentication.MicrosoftAccount >= 3.1.29",
       "Microsoft.AspNetCore.Authorization.Policy >= 2.2.0",
@@ -9591,11 +9667,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Israa's Work Files\\Projects\\20-10\\GOCompany\\GOCompanies\\GOCompanies.csproj",
+      "projectUniqueName": "D:\\Israa's Work Files\\Projects\\23-10\\GOCompany\\GOCompanies\\GOCompanies.csproj",
       "projectName": "GOCompanies",
-      "projectPath": "D:\\Israa's Work Files\\Projects\\20-10\\GOCompany\\GOCompanies\\GOCompanies.csproj",
+      "projectPath": "D:\\Israa's Work Files\\Projects\\23-10\\GOCompany\\GOCompanies\\GOCompanies.csproj",
       "packagesPath": "C:\\Users\\Ialghoul\\.nuget\\packages\\",
-      "outputPath": "D:\\Israa's Work Files\\Projects\\20-10\\GOCompany\\GOCompanies\\obj\\",
+      "outputPath": "D:\\Israa's Work Files\\Projects\\23-10\\GOCompany\\GOCompanies\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Ialghoul\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -9627,6 +9703,14 @@
           "AutoMapper.Extensions.Microsoft.DependencyInjection": {
             "target": "Package",
             "version": "[7.0.0, )"
+          },
+          "FakeItEasy": {
+            "target": "Package",
+            "version": "[7.3.1, )"
+          },
+          "FluentAssertions": {
+            "target": "Package",
+            "version": "[6.8.0, )"
           },
           "Microsoft.AspNetCore.Authentication.JwtBearer": {
             "target": "Package",
