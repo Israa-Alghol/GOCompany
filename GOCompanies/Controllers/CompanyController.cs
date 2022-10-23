@@ -55,7 +55,7 @@ namespace GOCompanies.Controllers
             {
                 try
                 {
-                    cRepo.Add(company);
+                    
                     var x = cRepo.GetAll().ToList();
                     foreach(var xc in x)
                     {
@@ -66,6 +66,7 @@ namespace GOCompanies.Controllers
                         }
                         
                     }
+                    cRepo.Add(company);
                     return RedirectToAction(nameof(Index));
 
                 }
