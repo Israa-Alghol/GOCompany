@@ -21,13 +21,15 @@
             <div class="form-group">
                 <label asp-for="Company" class="control-label">Comany Name</label>
                 <select asp-for="Company" class="form-control" 
-                        asp-items = "@(new SelectList(Model.Companies,"Id","Name"))"></select>
+                        asp-items = "@(new SelectList(Model.Companies,"Id","Name"))">
+                    <option value="">--- Please select an company ---</option></select>                       
                 <span asp-validation-for="Company" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Vehicle" class="control-label">Vehicle Name</label>
                 <select asp-for="Vehicle" class="form-control" 
-                        asp-items = "@(new SelectList(Model.Vehicles,"Id","Name"))"></select>
+                        asp-items = "@(new SelectList(Model.Vehicles,"Id","Name"))">
+                    <option value="">--- Please select an vehicle ---</option></select>
                 <span asp-validation-for="Vehicle" class="text-danger"></span>
             </div>
             <div class="form-group">

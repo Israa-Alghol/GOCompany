@@ -118,7 +118,6 @@ namespace GOCompanies.Controllers
                 driver.Company.Id = 0;
             }
             else
-
                 CompanyId = driver.Company.Id;
 
             var VehicleId = 0;
@@ -129,7 +128,6 @@ namespace GOCompanies.Controllers
                 driver.Vehicle.Id = 0;
             }
             else
-
                 VehicleId = driver.Vehicle.Id;
 
             var viewModel = new CompanyViewModel
@@ -142,6 +140,23 @@ namespace GOCompanies.Controllers
                 Vehicles = vRepo.GetAll().ToList(),
 
             };
+            //var vehicles = vRepo.GetAll().ToList();
+            Hashtable hTable = new Hashtable();
+            List<Vehicle> duplicateList = new List<Vehicle>();
+            foreach (var vehicle in viewModel.Vehicles)
+            {
+                var v = vehicle.Name;
+                if (hTable.Contains(v))
+                {
+                    duplicateList.Add(vehicle);
+                }
+                else
+                    hTable.Add(v, string.Empty);
+            }
+            foreach (var vehicle in duplicateList)
+                viewModel.Vehicles.Remove(vehicle);
+
+           
             return View(viewModel);
         }
 
@@ -227,15 +242,17 @@ namespace GOCompanies.Controllers
             }
             foreach (var vehicle in duplicateList)
                 vehicles.Remove(vehicle);
+
+            return vehicles;
             //for (int i = 0; i < vehicles.Count; i++)
             //{
-                //var distinct = vehicles[i].Name.Distinct().ToList();
-                //var vehicle = vehicles[i];
-                //var v = vehicle.Name;
+            //var distinct = vehicles[i].Name.Distinct().ToList();
+            //var vehicle = vehicles[i];
+            //var v = vehicle.Name;
             //}
             //var distinct = vehicles.Distinct().ToList();
             //vehicles.Insert(0, new Vehicle { Id = -1, Name = " --- Please select an vehicle --- " });
-            return vehicles;
+
         }
         CompanyViewModel GetAllVehicles()
         {
