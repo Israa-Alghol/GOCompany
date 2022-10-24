@@ -9,6 +9,8 @@
       "GOCompaniesTest/1.0.0": {
         "dependencies": {
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "7.0.0",
+          "FakeItEasy": "7.3.1",
+          "FluentAssertions": "6.8.0",
           "GOCompanies": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "3.1.29",
           "Microsoft.AspNetCore.Authentication.MicrosoftAccount": "3.1.29",
@@ -64,6 +66,28 @@
         }
       },
       "coverlet.collector/3.1.0": {},
+      "FakeItEasy/7.3.1": {
+        "dependencies": {
+          "Castle.Core": "5.1.0"
+        },
+        "runtime": {
+          "lib/netstandard2.1/FakeItEasy.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.3.1.0"
+          }
+        }
+      },
+      "FluentAssertions/6.8.0": {
+        "dependencies": {
+          "System.Configuration.ConfigurationManager": "4.5.0"
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/FluentAssertions.dll": {
+            "assemblyVersion": "6.8.0.0",
+            "fileVersion": "6.8.0.0"
+          }
+        }
+      },
       "Microsoft.AspNetCore.Authentication.Abstractions/2.2.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
@@ -2358,6 +2382,8 @@
       "GOCompanies/1.0.0": {
         "dependencies": {
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "7.0.0",
+          "FakeItEasy": "7.3.1",
+          "FluentAssertions": "6.8.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "3.1.29",
           "Microsoft.AspNetCore.Authentication.MicrosoftAccount": "3.1.29",
           "Microsoft.AspNetCore.Authorization.Policy": "2.2.0",
@@ -2410,6 +2436,20 @@
       "sha512": "sha512-YzYqSRrjoP5lULBhTDcTOjuM4IDPPi6PhFsl4w8EI4WdZhE6llt7E38Tg4CHyrS+QKwyu1+9OwkdDgluOdoBTw==",
       "path": "coverlet.collector/3.1.0",
       "hashPath": "coverlet.collector.3.1.0.nupkg.sha512"
+    },
+    "FakeItEasy/7.3.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ldJSgPLzVdN7MxmaZhdcnAcUya185Eqbqyx5tLjZHATI80UfLnSkQgQczD72qAdx8l3CUkWzNC43zrtnrz/jGQ==",
+      "path": "fakeiteasy/7.3.1",
+      "hashPath": "fakeiteasy.7.3.1.nupkg.sha512"
+    },
+    "FluentAssertions/6.8.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-NfSlAG97wMxS48Ov+wQEhJITdn4bKrgtKrG4sCPrFBVKozpC57lQ2vzsPdxUOsPbfEgEQTMtvCDECxIlDBfgNA==",
+      "path": "fluentassertions/6.8.0",
+      "hashPath": "fluentassertions.6.8.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Authentication.Abstractions/2.2.0": {
       "type": "package",

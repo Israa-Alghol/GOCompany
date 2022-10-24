@@ -17,7 +17,7 @@ namespace GOCompanies.Models
             modelBuilder.ApplyConfiguration(new RoleConfiguration());
 
         }
-        public DbSet<Company> Companies { get; set; }
+        public virtual DbSet<Company> Companies { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
         public DbSet<Driver> Drivers { get; set; }
     }

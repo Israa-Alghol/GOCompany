@@ -1174,3 +1174,5 @@ D:\Israa's Work Files\Projects\23-10\GOCompany\GOCompaniesTest\obj\Debug\netcore
 D:\Israa's Work Files\Projects\23-10\GOCompany\GOCompaniesTest\obj\Debug\netcoreapp3.1\GOCompaniesTest.dll
 D:\Israa's Work Files\Projects\23-10\GOCompany\GOCompaniesTest\obj\Debug\netcoreapp3.1\GOCompaniesTest.pdb
 D:\Israa's Work Files\Projects\23-10\GOCompany\GOCompaniesTest\obj\Debug\netcoreapp3.1\GOCompaniesTest.genruntimeconfig.cache
+D:\Israa's Work Files\Projects\23-10\GOCompany\GOCompaniesTest\bin\Debug\netcoreapp3.1\FakeItEasy.dll
+D:\Israa's Work Files\Projects\23-10\GOCompany\GOCompaniesTest\bin\Debug\netcoreapp3.1\FluentAssertions.dll

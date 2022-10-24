@@ -79,10 +79,7 @@ namespace GOCompanies.Controllers
             return View();
         }
 
-        public IEnumerable<Company> GetById(object i)
-        {
-            throw new NotImplementedException();
-        }
+
 
         // GET: CompanyController/Edit/5
         public ActionResult Edit(int id)
