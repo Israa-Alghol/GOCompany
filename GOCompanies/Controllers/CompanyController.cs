@@ -55,7 +55,7 @@ namespace GOCompanies.Controllers
             {
                 try
                 {
-                    
+
                     var x = cRepo.GetAll().ToList();
                     foreach(var xc in x)
                     {
